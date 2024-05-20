@@ -1,75 +1,122 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Web-Site</title>
+    <title>List</title>
 </head>
 
 <body>
+    <h1>List tag</h1>
+
+    <!-- order list -->
+    <ol type="1" start="1">
+        <!-- list item -->
+        <li>Hello</li>
+        <li>Hello</li>
+        <li>Hello</li>
+        <li>Hello</li>
+        <li>Hello</li>
+    </ol>
+
+    <!-- unorder list -->
+    <ul type="disc">
+        <li>Hello</li>
+        <li>Hello</li>
+        <li>Hello</li>
+        <li>Hello</li>
+        <li>Hello</li>
+    </ul>
+
+    <!-- details list  -->
+    <dl>
+        <dt>title</dt>
+        <dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, quisquam!</dd>
+        <dt>title2</dt>
+        <dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et eligendi, nesciunt ratione aliquid inventore,
+            error officia fugit, nobis quod mollitia esse? Hic dolore laborum facere. Fuga quidem fugit, ipsum
+            voluptatibus ipsam voluptas cum molestiae quasi amet consectetur quae est mollitia inventore eius ducimus
+            quos sed id accusantium cumque alias laboriosam!</dd>
+    </dl>
+
+    <li>sfsd</li>
+
+    <hr />
+
+    <h1>table</h1>
+
+    <!-- <table border="1">
+        <th>name</th>
+        <th>roll no</th>
+        <th>address</th>
+
+        <tbody>
+            <tr>
+                <td>Name 1</td>
+                <td>Roll 1</td>
+                <td>Roll 1</td>
+                <td>Roll 1</td>
+            </tr>
+
+            <tr>
+                <td>Name 1</td>
+                <td>Roll 1</td>
+                <td>Roll 1</td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <table border="1" cellpadding="5" cellspacing="5">
+      <tr>
+        <td colspan="6">Time Table</td>
+      </tr>
+
+      <tr>
+        <td rowspan="6">Hours</td>
+        <td>Mon</td>
+        <td>Tus</td>
+        <td>Wed</td>
+        <td>Thu</td>
+        <td>Sat</td>
+      </tr>
+
+      <tr>
+        <td>Subject</td>
+        <td>Subject</td>
+        <td>Subject</td>
+        <td>Subject</td>
+        <td>Subject</td>
+      </tr>
+
+      <tr>
+        <td>Subject</td>
+        <td>Subject</td>
+        <td>Subject</td>
+        <td>Subject</td>
+        <td>Subject</td>
+      </tr>
+
+      <tr>
+        <td colspan="5">Lunch</td>
+      </tr>
+
+      <tr>
+        <td>Subject</td>
+        <td>Subject</td>
+        <td>Subject</td>
+        <td rowspan="2" colspan="2">Project</td>
+        
+      </tr>
+
+      <tr>
+        <td>Subject</td>
+        <td>Subject</td>
+        <td>Subject</td>
+      </tr>
+    </table>
+
+    <img src="https://miro.medium.com/v2/resize:fit:489/1*xdegLAa2CZ2QTEboPYFPlw.png" alt="image text"/>
+    <img src="./image/download.jpeg" alt="image text"/>
 
 </body>
-<!-- block tag -->
-<!-- <h1>First Line</h1>
-<h2>Second line</h2>
-<p>hello</p>
-<p>hello 2</p> -->
-
-<!-- inline tag -->
-<!-- <u>underline</u>
-<b>first line</b>
-<b>second line</b>
-<i>inline</i>
-<a href="">google</a>
-<a href="facebook"> facebook</a> -->
-
-<!-- semantic tags -->
-<!-- <header>dsfsdfsd</header> 
-<article>sdfsd</article>
-<footer>sdfds</footer> -->
-
-<!-- non semantic tags -->
-<!-- <div>fdsfsdfd</div> -->
-
-<!-- input -->
-
-<form>
-    <!-- <input /> -->
-    <div>
-        First Name : <input type="text" placeholder="Enter your name">
-    </div>
-
-    <div>
-        Last Name : <input type="text" placeholder="Enter your name">
-    </div>
-    
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <input type="password" placeholder="Enter password" />
-    <input type="number" placeholder="Enter Number" />
-    <input type="time" placeholder="time" />
-    <input type="date" placeholder="date" />
-    <input type="datetime-local" placeholder="datetime" />
-    <input type="email" placeholder="Email" required>
-    <input type="file" placeholder="file">
-    <input type="checkbox"> remember password
-    <input type="checkbox"> remember password
-    <input type="radio" name="gender"> Male
-    <input type="radio" name="gender"> Female
-    <input type="color">
-    <input type="hidden">
-    <!-- <input type="image"> -->
-    <input type="month" />
-    <input type="range">
-    <input type="tel" />
-    <input type="week" />
-    <input type="submit" value="Login" />
-    <input type="reset" />
-
-    <textarea placeholder="Type here"></textarea>
-</form>
-
 
 </html>
