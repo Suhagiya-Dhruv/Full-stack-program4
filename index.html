@@ -1,78 +1,187 @@
 <html>
 
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
   <title>CSS Selector</title>
   <style>
-    /* tag selector */
-    h1 {
-      color: green;
-    }
-
-    h2 {
+    /* .red {
       color: red;
     }
 
-    div {
-      /* color: #5F0; */
-      /* color: #0000FF; */
-      /* color: rgb(200, 56, 25);
-      background-color: rgba(200, 57, 25, 0.187);
-      color:lightseagreen;
-      color: blue; */
-      /* font-size: 24px; */
-      /* font-family: "Gochi Hand", cursive; */
+    .green {
+      color: #00FF00
+    } */
 
-      /* font-weight: bolder; */
+    /* #big-font{
+      font-size: 30px;
+    } */
 
-      /* text-transform: capitalize; */
-      /* text-transform: lowercase; */
-      /* text-transform: uppercase; */
+    /* .big-font {
+      font-size: 26px;
+    } */
 
-      /* text-decoration: none; */
+    /* .m2{
+      color: blue;
+    } */
+
+    /* multiclass selector */
+
+    /* .m1.m2.m3 {
+      color: blue;
+    } */
+
+    /* universal Selector */
+    /* *{
+      color: blue
+    } */
+
+
+    /* div {
+      background-color: red;
     }
 
-    /* RGB
+    span {
+      background-color: red;
+    } */
 
-    #000 */
-
-    /* class selector */
-    .div {
-      /* tag */
-      font-size: 20px;
-      font-weight: bold;
+    /* Gropuing Selector */
+    /* div,
+    span {
+      color: blue;
     }
 
-    /* id selector */
-    #green {
-      color: green
+    .one,
+    .three {
+      color: blue
+    } */
+
+
+    h1,
+    .class,
+    #id,
+    div,
+    p,
+    .red,
+    #blue {
+
+      /* proparty : value */
+
     }
 
-    #red{
-      color: red
+    /* li {
+      color: blue
+    } */
+
+    /* Descendant combinator selector .c1 .c2 */
+
+    /* .c1 {
+      color: red;
+    } */
+
+    /* .c2 {
+      color: blue;
+    } */
+
+    .c1 .c2 {
+      color: blue;
     }
+
+    ul li {
+      color: blue
+    }
+
+    /* Attribute Selector */
+
+    /* input[type="email"]{
+      color: blue
+    } */
+
+    /* [type="email"] {
+      color: red;
+    } */
+
+    /* [value="Submit"] {
+      color: blue;
+    } */
+
+    /* <input type="text" value="Submit"> */
+
   </style>
-
-  <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 
 <body>
 
-  <!-- <h1 style="color: red">Heading 1</h1>
-  <h1>Heading 2</h1>
-  <h1>Heading 3</h1>
+  <!-- <div class="red big-font">Red</div>
+  <div class="green big-font">Green</div> -->
 
-  <h2>Heading 2</h2> -->
+  <!-- <div class="m1">Don't Select me</div>
+  <div class="m2">Don't Select me</div>
+  <div class="m2 m3 m1">Select me</div>
+  <div class="m1 m2">Don't Select me</div>
+  <div class="m2 m3">Don't Select me</div>
 
-  <div class="div">HTML and CSS</div>
-  <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, omnis.</div>
-  <div class="div" id="green">CSS and HTML</div>
-  <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, laboriosam.</div>
-  <div class="div" id="red">CSS and HTML</div>
-  <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, laboriosam.</div>
+  <div>Hello</div>
+  <p>Lorem ipsum dolor sit amet.</p>
 
+  <ul>
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+  </ul> -->
+
+
+  <!-- <div>
+    block tag
+  </div>
+
+  <span>
+    inline tag
+  </span>
+
+  <ol>
+    <li class="one">item</li>
+    <li>item</li>
+    <li>item</li>
+  </ol>
+
+
+  <ul>
+    <li>item</li>
+    <li>item</li>
+    <li class="three">item</li>
+  </ul> -->
+
+  <!-- <ol>
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+  </ol>
+
+
+  <ul>
+    <p>p item</p>
+    <p>p item</p>
+    <p>p item</p>
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+  </ul>
+
+  <div class="c1">
+    <div>item 1</div>
+    <div>item 1</div>
+    <div class="c2">item 1</div>
+    <div class="c2">item 1</div>
+    <div>item 1</div>
+    <div>item 1</div>
+  </div>
+
+  <div class="c2">item 1</div> -->
+
+  <!-- <input type="text">
+  <input type="email"> -->
+
+  <!-- <input type="text" value="First Name">
+  <input type="text" value="Submit"> -->
 
 </body>
 
