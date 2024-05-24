@@ -1,40 +1,95 @@
-## CSS Selector
+```markdown
+# CSS Selectors
 
-CSS selectors are patterns used to select and style HTML elements. They allow you to target specific elements or groups of elements in your HTML document. Here are three commonly used CSS selectors:
+## 4. Multi-class Selector
 
-### 1. Element Selector
+This selector applies styles only to elements that have all the specified classes.
 
-The element selector targets HTML elements based on their tag name. It applies styles to all elements of that type within the document.
+```html
+<!-- Example HTML -->
+<div class="m1">Don't Select me</div>
+<div class="m2">Don't Select me</div>
+<div class="m2 m3 m1">Select me</div>
 
-Example:
-```css
-p {
-    color: blue;
+<!-- CSS -->
+.m1.m2.m3 {
+  color: blue;
 }
 ```
-This will make all `<p>` elements blue.
 
-### 2. Class Selector (.)
+## 5. Universal Selector
 
-The class selector targets HTML elements with a specific class attribute. It allows you to apply styles to multiple elements that share the same class.
+The universal selector (*) selects all elements.
 
-Example:
-```css
-.myClass {
-    font-size: 18px;
-    color: red;
+```html
+<!-- Example HTML -->
+<div>Hello</div>
+<p>Lorem ipsum dolor sit amet.</p>
+
+<!-- CSS -->
+* {
+  color: blue;
 }
 ```
-This will apply the specified styles to all elements with `class="myClass"`.
 
-### 3. ID Selector (#)
+## 6. Grouping Selector
 
-The ID selector targets a single HTML element based on its unique ID attribute. It is used when you want to style a particular element uniquely.
+Grouping selectors apply the same styles to multiple elements.
 
-Example:
-```css
-#myId {
-    background-color: yellow;
+```html
+<!-- Example HTML -->
+<div>block tag</div>
+<span>inline tag</span>
+
+<!-- CSS -->
+div, span {
+  background-color: red;
 }
 ```
-This will apply the specified styles to the element with `id="myId"`.
+
+## 7. Descendant Combinator
+
+The descendant combinator (space) selects elements that are descendants of another element.
+
+```html
+<!-- Example HTML -->
+<div class="c1">
+  <div>item 1</div>
+  <div>item 1</div>
+  <div class="c2">item 1</div>
+  <div class="c2">item 1</div>
+</div>
+
+<!-- CSS -->
+.c1 .c2 {
+  color: blue;
+}
+```
+
+## 8. Attribute Selector
+
+Attribute selectors select elements based on an attribute or attribute value.
+
+```html
+<!-- Example HTML -->
+<input type="text">
+<input type="email">
+
+<!-- CSS -->
+input[type="email"] {
+  color: blue;
+}
+```
+
+Another example:
+
+```html
+<!-- Example HTML -->
+<input type="text" value="First Name">
+<input type="text" value="Submit">
+
+<!-- CSS -->
+[value="Submit"] {
+  color: blue;
+}
+```
