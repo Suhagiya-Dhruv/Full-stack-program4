@@ -1,95 +1,107 @@
-```markdown
 # CSS Selectors
 
-## 4. Multi-class Selector
+### Child Selector (`>`)
 
-This selector applies styles only to elements that have all the specified classes.
+The child selector selects all direct children of a specified element.
 
-```html
-<!-- Example HTML -->
-<div class="m1">Don't Select me</div>
-<div class="m2">Don't Select me</div>
-<div class="m2 m3 m1">Select me</div>
+```css
+.p1 > .p2 {
+  color: red;
+}
+```
 
-<!-- CSS -->
-.m1.m2.m3 {
+- This rule selects all elements with the class `p2` that are direct children of an element with the class `p1` and sets their text color to red.
+
+### Adjacent Sibling Selector (`+`)
+
+The adjacent sibling selector selects the next sibling element immediately following the specified element.
+
+```css
+div + p {
+  color: red;
+}
+```
+
+- This rule selects the first `<p>` element that is immediately preceded by a `<div>` and sets its text color to red.
+
+### General Sibling Selector (`~`)
+
+The general sibling selector selects all siblings of the specified element that follow it.
+
+```css
+div ~ p {
+  color: red;
+}
+```
+
+- This rule selects all `<p>` elements that are siblings of a `<div>` and sets their text color to red.
+
+### Pseudo-classes (`:link`, `:visited`, `:hover`, `:active`)
+
+The hover selector applies styles when the user hovers over an element.
+
+```css
+.hello:hover {
   color: blue;
+  font-size: 24px;
 }
 ```
 
-## 5. Universal Selector
+These selectors style links based on their state.
 
-The universal selector (*) selects all elements.
+```css
+a:link {
+  color: red;
+}
 
-```html
-<!-- Example HTML -->
-<div>Hello</div>
-<p>Lorem ipsum dolor sit amet.</p>
-
-<!-- CSS -->
-* {
-  color: blue;
+a:visited {
+  color: green;
 }
 ```
 
-## 6. Grouping Selector
+- `a:link` styles unvisited links with red color.
+- `a:visited` styles visited links with green color.
 
-Grouping selectors apply the same styles to multiple elements.
+The active selector applies styles when an element is being activated, such as when a button is being clicked.
 
-```html
-<!-- Example HTML -->
-<div>block tag</div>
-<span>inline tag</span>
-
-<!-- CSS -->
-div, span {
-  background-color: red;
+```css
+button:active {
+  color: red;
 }
 ```
 
-## 7. Descendant Combinator
+- This rule changes the text color to red when the button is being clicked.
 
-The descendant combinator (space) selects elements that are descendants of another element.
 
-```html
-<!-- Example HTML -->
-<div class="c1">
-  <div>item 1</div>
-  <div>item 1</div>
-  <div class="c2">item 1</div>
-  <div class="c2">item 1</div>
-</div>
+### Pseudo-elements (`::first-line`, `::first-letter`, `::before`, `::after`)
 
-<!-- CSS -->
-.c1 .c2 {
-  color: blue;
+Pseudo-elements style specific parts of an element.
+
+```css
+p::first-line {
+  color: red;
+}
+
+p::first-letter {
+  font-size: 32px;
 }
 ```
 
-## 8. Attribute Selector
+- `p::first-line` styles the first line of a paragraph with red color.
+- `p::first-letter` styles the first letter of a paragraph with a font size of 32px.
 
-Attribute selectors select elements based on an attribute or attribute value.
 
-```html
-<!-- Example HTML -->
-<input type="text">
-<input type="email">
+These pseudo-elements are used to insert content before or after an element's content.
 
-<!-- CSS -->
-input[type="email"] {
-  color: blue;
+```css
+span::before {
+  content: "123";
+}
+
+span::after {
+  content: "456";
 }
 ```
 
-Another example:
-
-```html
-<!-- Example HTML -->
-<input type="text" value="First Name">
-<input type="text" value="Submit">
-
-<!-- CSS -->
-[value="Submit"] {
-  color: blue;
-}
-```
+- `span::before` inserts "123" before the content of the `<span>` element.
+- `span::after` inserts "456" after the content of the `<span>` element.

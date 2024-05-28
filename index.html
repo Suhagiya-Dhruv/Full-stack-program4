@@ -3,186 +3,103 @@
 <head>
   <title>CSS Selector</title>
   <style>
-    /* .red {
-      color: red;
-    }
-
-    .green {
-      color: #00FF00
-    } */
-
-    /* #big-font{
-      font-size: 30px;
-    } */
-
-    /* .big-font {
-      font-size: 26px;
-    } */
-
-    /* .m2{
-      color: blue;
-    } */
-
-    /* multiclass selector */
-
-    /* .m1.m2.m3 {
-      color: blue;
-    } */
-
-    /* universal Selector */
-    /* *{
-      color: blue
-    } */
-
-
-    /* div {
-      background-color: red;
-    }
-
-    span {
-      background-color: red;
-    } */
-
-    /* Gropuing Selector */
-    /* div,
-    span {
-      color: blue;
-    }
-
-    .one,
-    .three {
-      color: blue
-    } */
-
-
-    h1,
-    .class,
-    #id,
-    div,
-    p,
-    .red,
-    #blue {
-
-      /* proparty : value */
-
-    }
-
-    /* li {
-      color: blue
-    } */
-
-    /* Descendant combinator selector .c1 .c2 */
-
-    /* .c1 {
+    /* .p1>.p2 {
       color: red;
     } */
 
-    /* .c2 {
-      color: blue;
+    /* div+p {
+      color: red
     } */
 
-    .c1 .c2 {
-      color: blue;
-    }
-
-    ul li {
-      color: blue
-    }
-
-    /* Attribute Selector */
-
-    /* input[type="email"]{
-      color: blue
+    /* div~p {
+      color: red
     } */
 
-    /* [type="email"] {
+    /* .hello:hover {
+      color: blue;
+      font-size: 24px;
+    } */
+
+    /* a:link {
       color: red;
+    }
+
+    a:visited {
+      color: green;
     } */
 
-    /* [value="Submit"] {
-      color: blue;
+    /* button:active{
+      color: red
     } */
 
-    /* <input type="text" value="Submit"> */
+    /* p::first-line {
+      color: red
+    }
 
+    p::first-letter {
+      font-size: 32px;
+    } */
+
+    /* p span{
+      font-size: 32px;
+    } */
+
+    /* span::before {
+      content: "123"
+    }
+
+    span::after {
+      content: "456"
+    } */
   </style>
 </head>
 
 <body>
 
-  <!-- <div class="red big-font">Red</div>
-  <div class="green big-font">Green</div> -->
+  <!-- <div class="p1">
+    <div class="p2">hello</div>
+    <div>
+      <div class="p2"> hello</div>
+    </div>
+    <div class="p2">hello</div>
+  </div> -->
 
-  <!-- <div class="m1">Don't Select me</div>
-  <div class="m2">Don't Select me</div>
-  <div class="m2 m3 m1">Select me</div>
-  <div class="m1 m2">Don't Select me</div>
-  <div class="m2 m3">Don't Select me</div>
-
-  <div>Hello</div>
-  <p>Lorem ipsum dolor sit amet.</p>
-
-  <ul>
-    <li>item</li>
-    <li>item</li>
-    <li>item</li>
-  </ul> -->
-
-
-  <!-- <div>
-    block tag
+  <!-- <p>Before Div</p>
+  <div>
+    <p>Inside Div</p>
   </div>
+  <p>After Div 1</p>
+  <p>After Div 2</p>
+  <div>
+    <p>Inside Div</p>
 
-  <span>
-    inline tag
-  </span>
+    <div>
+      <p>Inside Div</p>
+    </div>
+    <p>After Div 1</p>
 
-  <ol>
-    <li class="one">item</li>
-    <li>item</li>
-    <li>item</li>
-  </ol>
-
-
-  <ul>
-    <li>item</li>
-    <li>item</li>
-    <li class="three">item</li>
-  </ul> -->
-
-  <!-- <ol>
-    <li>item</li>
-    <li>item</li>
-    <li>item</li>
-  </ol>
-
-
-  <ul>
-    <p>p item</p>
-    <p>p item</p>
-    <p>p item</p>
-    <li>item</li>
-    <li>item</li>
-    <li>item</li>
-  </ul>
-
-  <div class="c1">
-    <div>item 1</div>
-    <div>item 1</div>
-    <div class="c2">item 1</div>
-    <div class="c2">item 1</div>
-    <div>item 1</div>
-    <div>item 1</div>
   </div>
+  <p>After Div 1</p> -->
 
-  <div class="c2">item 1</div> -->
+  <!-- <div class="hello">Hello</div> -->
 
-  <!-- <input type="text">
-  <input type="email"> -->
+  <!-- <a href="https://www.notepage.in/?m=1">Click me</a> -->
 
-  <!-- <input type="text" value="First Name">
-  <input type="text" value="Submit"> -->
 
+  <!-- <button>Click me</button> -->
+
+  <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat excepturi provident quis unde ipsa.
+    Illo iure omnis quod minima assumenda labore corporis! Fuga explicabo sint eos assumenda, qui ullam? Quisquam animi
+    reprehenderit asperiores porro praesentium aut, molestias reiciendis, soluta consequatur, iste fuga ullam quaerat
+    delectus repudiandae impedit quia. Optio.</p>
+
+
+    <p><span>L</span>orem ipsum dolor sit amet consectetur adipisicing elit. Asperiores placeat excepturi provident quis unde ipsa.
+      Illo iure omnis quod minima assumenda labore corporis! Fuga explicabo sint eos assumenda, qui ullam? Quisquam animi
+      reprehenderit asperiores porro praesentium aut, molestias reiciendis, soluta consequatur, iste fuga ullam quaerat
+      delectus repudiandae impedit quia. Optio.</p> -->
+
+  <!-- <span>Hello</span> -->
 </body>
 
 </html>
