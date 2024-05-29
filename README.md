@@ -1,107 +1,136 @@
-# CSS Selectors
+# CSS Box Model
 
-### Child Selector (`>`)
+The CSS Box Model is a fundamental concept in web development that describes the structure of elements on a webpage. Every element is represented as a rectangular box, which consists of the following areas:
 
-The child selector selects all direct children of a specified element.
+1. **Content**: The innermost part, where the text and images appear.
+2. **Padding**: Clears an area around the content. The padding is transparent.
+3. **Border**: A border that surrounds the padding (if any) and content.
+4. **Margin**: Clears an area outside the border. The margin is also transparent.
+
+## CSS Box Model Properties
+
+### Universal Selector
+
+The universal selector `*` applies styles to all elements on the page.
 
 ```css
-.p1 > .p2 {
-  color: red;
+* {
+  margin: 0;
+  padding: 0;
 }
 ```
 
-- This rule selects all elements with the class `p2` that are direct children of an element with the class `p1` and sets their text color to red.
+- This resets the default margin and padding for all elements.
 
-### Adjacent Sibling Selector (`+`)
+### Styling the `div` Element
 
-The adjacent sibling selector selects the next sibling element immediately following the specified element.
+The following properties demonstrate various aspects of the CSS Box Model applied to `div` elements.
 
-```css
-div + p {
-  color: red;
-}
-```
-
-- This rule selects the first `<p>` element that is immediately preceded by a `<div>` and sets its text color to red.
-
-### General Sibling Selector (`~`)
-
-The general sibling selector selects all siblings of the specified element that follow it.
+#### Font Size
 
 ```css
-div ~ p {
-  color: red;
-}
-```
-
-- This rule selects all `<p>` elements that are siblings of a `<div>` and sets their text color to red.
-
-### Pseudo-classes (`:link`, `:visited`, `:hover`, `:active`)
-
-The hover selector applies styles when the user hovers over an element.
-
-```css
-.hello:hover {
-  color: blue;
+div {
   font-size: 24px;
 }
 ```
 
-These selectors style links based on their state.
+- Sets the font size of the text inside the `div` to 24 pixels.
+
+#### Border
+
+Borders can have various styles, widths, and colors.
 
 ```css
-a:link {
-  color: red;
-}
-
-a:visited {
-  color: green;
+div {
+  border: 1px solid #5501FC;
 }
 ```
 
-- `a:link` styles unvisited links with red color.
-- `a:visited` styles visited links with green color.
+- `border`: Sets a 1-pixel wide solid border with the color `#5501FC`.
 
-The active selector applies styles when an element is being activated, such as when a button is being clicked.
+Other possible border styles include:
+- `solid`
+- `double`
+- `dashed`
+- `dotted`
+- `groove`
+- `ridge`
+- `inset`
+- `outset`
+
+#### Padding
+
+Padding creates space inside the element, between the content and the border.
 
 ```css
-button:active {
-  color: red;
+/* padding-top: 10px;
+padding-bottom: 20px;
+padding-right: 50px;
+padding-left: 20px; */
+
+/* padding: 10px 50px 10px 20px; */
+/* padding: 10px 10px 20px; */
+/* padding: 10px 50px */
+```
+
+- Individual sides: `padding-top`, `padding-right`, `padding-bottom`, `padding-left`.
+- Shorthand:
+  - `padding: 10px 50px 10px 20px;` (top, right, bottom, left)
+  - `padding: 10px 10px 20px;` (top, right & left, bottom)
+  - `padding: 10px 50px;` (top & bottom, right & left)
+
+#### Margin
+
+Margin creates space outside the element, between the border and the surrounding elements.
+
+```css
+/* margin-top: 10px;
+margin-bottom: 20px;
+margin-right: 50px;
+margin-left: 20px; */
+
+/* margin: 10px 50px 10px 20px; */
+/* margin: 10px 10px 20px; */
+/* margin: 10px 50px */
+```
+
+- Individual sides: `margin-top`, `margin-right`, `margin-bottom`, `margin-left`.
+- Shorthand:
+  - `margin: 10px 50px 10px 20px;` (top, right, bottom, left)
+  - `margin: 10px 10px 20px;` (top, right & left, bottom)
+  - `margin: 10px 50px;` (top & bottom, right & left)
+
+#### Border Radius
+
+The `border-radius` property creates rounded corners.
+
+```css
+/* border-radius: 5px 20px 50px 100px; */
+```
+
+- This sets the border radius for the top-left, top-right, bottom-right, and bottom-left corners, respectively.
+
+#### Width and Height
+
+```css
+div {
+  width: 200px;
+  height: 200px;
 }
 ```
 
-- This rule changes the text color to red when the button is being clicked.
+- Sets the width and height of the `div` to 200 pixels each.
 
+#### Circle Shape
 
-### Pseudo-elements (`::first-line`, `::first-letter`, `::before`, `::after`)
-
-Pseudo-elements style specific parts of an element.
+To create a circle, set equal width and height, and a `border-radius` of 50%.
 
 ```css
-p::first-line {
-  color: red;
-}
-
-p::first-letter {
-  font-size: 32px;
+div {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 ```
 
-- `p::first-line` styles the first line of a paragraph with red color.
-- `p::first-letter` styles the first letter of a paragraph with a font size of 32px.
-
-
-These pseudo-elements are used to insert content before or after an element's content.
-
-```css
-span::before {
-  content: "123";
-}
-
-span::after {
-  content: "456";
-}
-```
-
-- `span::before` inserts "123" before the content of the `<span>` element.
-- `span::after` inserts "456" after the content of the `<span>` element.
+For more detailed information, you can refer to the [MDN Web Docs on Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model).
