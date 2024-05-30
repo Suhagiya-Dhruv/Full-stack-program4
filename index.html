@@ -1,52 +1,141 @@
-<html>
+<html lang="en">
 
 <head>
-  <title>Box Model</title>
+  <title>Box Sizing</title>
   <style>
     * {
-      margin: 0;
       padding: 0;
+      margin: 0;
+      box-sizing: border-box;
     }
 
-    div {
-      font-size: 24px;
-      /* border-style: outset; */
-      /* solid, double, dashed, dotted, groove, ridge, inset */
-      /* border-width: 5px;
-      border-color: blue; */
 
-      border: 1px solid #5501FC;
-      /* padding-top: 10px;
-      padding-bottom: 20px;
-      padding-right: 50px;
-      padding-left: 20px; */
-
-      /* padding: 10px 50px 10px 20px; */
-      /* padding: 10px 10px 20px; */
-      /* padding: 10px 50px */
-
-      /* margin-top: 10px;
-      margin-bottom: 20px;
-      margin-right: 50px;
-      margin-left: 20px; */
-
-      /* margin: 10px 50px 10px 20px; */
-      /* margin: 10px 10px 20px; */
-      /* margin: 10px 50px */
-
-      /* border-radius: 5px 20px 50px 100px; */
-
+    /* .div1{
+      box-sizing: content-box;
       width: 200px;
       height: 200px;
-      border-radius: 50%;
+      background-color: lightblue;
+      padding: 20px;
+      border: 10px solid lightblue;
+      margin: 10px;
     }
+
+    .div2{
+      box-sizing: border-box;
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+      padding: 20px;
+      border: 10px solid lightblue;
+      margin: 10px;
+    } */
+
+    /* div {
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+      margin: 100px 5px;
+    } */
+
+    .visible {
+      overflow: visible;
+      /* default */
+    }
+
+    .hidden {
+      overflow: hidden;
+    }
+
+    .scroll {
+      /* text-wrap: nowrap; */
+      /* overflow: scroll; */
+      overflow: scroll;
+
+    }
+
+    .auto {
+      /* text-wrap: nowrap; */
+      overflow: auto;
+    }
+
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: transparent;
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(169, 167, 167);
+      border-radius: 10px;
+    }
+
+    .center {
+      width: 200px;
+      height: 300px;
+      border: 1px solid blue;
+      text-align: center;
+    }
+
+    .image_div{
+      width: 200px;
+      height: 150px;
+      border: 1px solid red;
+    }
+
   </style>
 </head>
 
-
 <body>
-  <div>Content</div>
-  <div>Content</div>
+
+  <!-- <div class="div1"></div>
+  <div class="div2"></div> -->
+
+  <!-- OverFlow -->
+
+  <!-- <div class="visible">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa perferendis labore repellat,
+    nostrum, mollitia ad doloribus voluptatum ducimus in voluptatibus quia odio, aliquid est. Eum dolore corrupti nihil
+    adipisci totam alias dolor cupiditate sequi deleniti tempora? Repellat, animi nisi dicta, vel eaque temporibus
+    obcaecati tenetur ipsam repudiandae voluptatibus corporis quisquam.</div>
+
+  <div class="hidden">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa perferendis labore repellat,
+    nostrum, mollitia ad doloribus voluptatum ducimus in voluptatibus quia odio, aliquid est. Eum dolore corrupti nihil
+    adipisci totam alias dolor cupiditate sequi deleniti tempora? Repellat, animi nisi dicta, vel eaque temporibus
+    obcaecati tenetur ipsam repudiandae voluptatibus corporis quisquam.</div>
+
+  <div class="scroll">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa perferendis labore repellat,
+    nostrum, mollitia ad doloribus voluptatum ducimus in voluptatibus quia odio, aliquid est. Eum dolore corrupti nihil
+    adipisci totam alias dolor cupiditate sequi deleniti tempora? Repellat, animi nisi dicta, vel eaque temporibus
+    obcaecati tenetur ipsam repudiandae voluptatibus corporis quisquam.</div>
+
+  <div class="auto">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa perferendis labore repellat,
+    nostrum, mollitia ad doloribus voluptatum ducimus in voluptatibus quia odio, aliquid est. Eum dolore corrupti nihil
+    adipisci totam alias dolor cupiditate sequi deleniti tempora? Repellat, animi nisi dicta, vel eaque temporibus
+    obcaecati tenetur ipsam repudiandae voluptatibus corporis quisquam.</div> -->
+
+  <div class="center">
+    <div class="image_div">
+      <img src="https://img.freepik.com/free-photo/creative-reels-composition_23-2149711507.jpg" alt="" width="100%" height="100%">
+    </div>
+    <div>
+      <h1>Mobile</h1>
+    </div>
+  </div>
+
+  <div class="center">
+    <div class="image_div">
+      <img src="https://img.freepik.com/free-photo/creative-reels-composition_23-2149711507.jpg" alt="" width="100%" height="100%">
+    </div>
+    <div>
+      <h1>Mobile</h1>
+    </div>
+  </div>
 </body>
 
 </html>
