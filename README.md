@@ -1,7 +1,3 @@
-Sure! Here’s a detailed explanation of the CSS properties and HTML elements used in your code, formatted in Markdown for easy addition to a GitHub repository.
-
----
-
 # Box Sizing and Overflow
 
 ## Introduction
