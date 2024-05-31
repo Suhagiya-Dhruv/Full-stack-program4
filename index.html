@@ -1,141 +1,76 @@
 <html lang="en">
 
 <head>
-  <title>Box Sizing</title>
+  <title>CSS Display</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     * {
-      padding: 0;
       margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
-
-    /* .div1{
-      box-sizing: content-box;
-      width: 200px;
+    /* 
+    h1 {
+      display: inline;
+      width: 500px;
       height: 200px;
-      background-color: lightblue;
-      padding: 20px;
-      border: 10px solid lightblue;
-      margin: 10px;
+      background-color: blue;
+      padding: 50px 50px;
+      border: 10px solid;
+      margin: 100px;
     }
 
-    .div2{
-      box-sizing: border-box;
-      width: 200px;
+    span{
+      display: block;
+      background-color: red;
+      width: 500px;
       height: 200px;
-      background-color: lightblue;
-      padding: 20px;
-      border: 10px solid lightblue;
-      margin: 10px;
+      padding: 50px 50px;
+      border: 10px solid;
+      margin: 100px;
+
     } */
 
-    /* div {
+    h1 {
+      display: inline-block;
+      background-color: red;
+      height: 100px;
       width: 200px;
+    }
+
+    .div {
+      display: inline-block;
+      width: 100px;
       height: 200px;
-      border: 1px solid black;
-      margin: 100px 5px;
-    } */
-
-    .visible {
-      overflow: visible;
-      /* default */
+      background-color: blue;
+      margin: 0 10px;
     }
 
-    .hidden {
-      overflow: hidden;
+    .color{
+      color: red;
+      font-size: 50px;
     }
-
-    .scroll {
-      /* text-wrap: nowrap; */
-      /* overflow: scroll; */
-      overflow: scroll;
-
-    }
-
-    .auto {
-      /* text-wrap: nowrap; */
-      overflow: auto;
-    }
-
-
-    ::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-    }
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-      box-shadow: transparent;
-      border-radius: 10px;
-    }
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: rgb(169, 167, 167);
-      border-radius: 10px;
-    }
-
-    .center {
-      width: 200px;
-      height: 300px;
-      border: 1px solid blue;
-      text-align: center;
-    }
-
-    .image_div{
-      width: 200px;
-      height: 150px;
-      border: 1px solid red;
-    }
-
   </style>
 </head>
 
 <body>
 
-  <!-- <div class="div1"></div>
-  <div class="div2"></div> -->
+  <span>Hello</span>
+  <h1>Hello</h1>
 
-  <!-- OverFlow -->
+  <button>This is button</button>
 
-  <!-- <div class="visible">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa perferendis labore repellat,
-    nostrum, mollitia ad doloribus voluptatum ducimus in voluptatibus quia odio, aliquid est. Eum dolore corrupti nihil
-    adipisci totam alias dolor cupiditate sequi deleniti tempora? Repellat, animi nisi dicta, vel eaque temporibus
-    obcaecati tenetur ipsam repudiandae voluptatibus corporis quisquam.</div>
-
-  <div class="hidden">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa perferendis labore repellat,
-    nostrum, mollitia ad doloribus voluptatum ducimus in voluptatibus quia odio, aliquid est. Eum dolore corrupti nihil
-    adipisci totam alias dolor cupiditate sequi deleniti tempora? Repellat, animi nisi dicta, vel eaque temporibus
-    obcaecati tenetur ipsam repudiandae voluptatibus corporis quisquam.</div>
-
-  <div class="scroll">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa perferendis labore repellat,
-    nostrum, mollitia ad doloribus voluptatum ducimus in voluptatibus quia odio, aliquid est. Eum dolore corrupti nihil
-    adipisci totam alias dolor cupiditate sequi deleniti tempora? Repellat, animi nisi dicta, vel eaque temporibus
-    obcaecati tenetur ipsam repudiandae voluptatibus corporis quisquam.</div>
-
-  <div class="auto">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa perferendis labore repellat,
-    nostrum, mollitia ad doloribus voluptatum ducimus in voluptatibus quia odio, aliquid est. Eum dolore corrupti nihil
-    adipisci totam alias dolor cupiditate sequi deleniti tempora? Repellat, animi nisi dicta, vel eaque temporibus
-    obcaecati tenetur ipsam repudiandae voluptatibus corporis quisquam.</div> -->
-
-  <div class="center">
-    <div class="image_div">
-      <img src="https://img.freepik.com/free-photo/creative-reels-composition_23-2149711507.jpg" alt="" width="100%" height="100%">
-    </div>
-    <div>
-      <h1>Mobile</h1>
-    </div>
+  <div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
   </div>
 
-  <div class="center">
-    <div class="image_div">
-      <img src="https://img.freepik.com/free-photo/creative-reels-composition_23-2149711507.jpg" alt="" width="100%" height="100%">
-    </div>
-    <div>
-      <h1>Mobile</h1>
-    </div>
-  </div>
+  <!-- https://fontawesome.com/ -->
+  <i class="fa-solid fa-plane color"></i>
+
+  <!-- Task : https://www.codewithrandom.com/wp-content/uploads/2023/01/blog-card-template-7.jpg -->
 </body>
 
 </html>
