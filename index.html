@@ -1,80 +1,99 @@
 <html>
 
 <head>
-  <title>Units</title>
+  <title>Position</title>
   <style>
-    html {
-      font-size: 40px;
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
     }
 
-    .unit {
-      /* font-size: 50px; */
-      /* font-size: 1in; */
-      /* font-size: 2cm; */
-      /* font-size: 5mm; */
+    div {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
     }
 
-    .unit {
-      /* width: 250px;
-      height: 500px; */
-
-      /* width: 50vw;
-      height: 50vh; */
-      /* background-color: lightcoral;
-      width: 10rem;
-      height: 10rem; */
-    }
-
-    /* .unit1{
-      font-size: 20px;
-    }
-
-    .unit1-1 {
-      height: 1.5em;
-      background-color: lightcoral;
-    } */
-
-    .parent{
-      width: 90vw;
-      height: 300px;
-      background-color: lightcoral;
-    }
-
-    .child1{
-      width: 75%;
+    .div1 {
       background-color: lightgreen;
     }
 
-    .child2{
-      width: 50%;
-      background-color: lightskyblue;
+    .div2 {
+      background-color: lightblue;
+      /* position: absolute; */
+      /* static, realative, absolute , fixed , sticky */
+      /* top: 10px;
+      left: 100px; */
+      position: relative;
+      left: 50px;
+      overflow: hidden;
+    }
+
+    .div3 {
+      background-color: lightcoral;
+    }
+
+    .child{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      top: -55px;
+      left: -45px;
+      transform: rotate(50deg);
     }
   </style>
 </head>
 
 <body>
-  <!-- <div class="unit1">
+  <!-- <div class="div1"></div>
+  <div class="div2"></div>
+  <div class="div3"></div>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, ex ea! Quisquam est cupiditate architecto, nobis
+    maiores perspiciatis repellendus odit dolor repudiandae molestias amet optio ad, beatae commodi nisi. Cumque iste
+    accusamus facere praesentium, in, quis inventore ducimus harum voluptas esse corporis adipisci, sed impedit? Iure
+    placeat corrupti voluptatem! Voluptas est temporibus dolorum eum! Facere adipisci ipsam cumque vero fuga laborum,
+    recusandae corporis. Sequi repellat praesentium asperiores natus, autem maiores sed laboriosam dolorum architecto
+    ducimus fugit atque ex eveniet itaque quam. Aspernatur voluptatibus nam ducimus numquam laboriosam, natus porro aut
+    molestias quos! Doloribus dolore mollitia vero excepturi adipisci ducimus debitis expedita iure, velit accusamus.
+    Perspiciatis dignissimos aperiam aspernatur officiis nesciunt. Voluptates, totam aliquid soluta sint, vel dolorum
+    numquam cumque commodi debitis, nostrum id consequatur culpa eos. Nihil earum nobis ut cumque doloremque quam
+    pariatur, error illum quos autem. Soluta vel molestiae nobis recusandae commodi consectetur voluptatum blanditiis
+    sit, voluptate sequi nulla aliquam unde facere, a reiciendis dignissimos itaque quam accusamus quisquam ex earum,
+    aperiam nostrum veritatis magni. Atque beatae, enim eligendi quas ex omnis tempore ratione temporibus, ullam, veniam
+    quos rem distinctio eius ab maxime pariatur voluptatibus sunt corporis illum maiores? Est praesentium voluptatem
+    deserunt aut laborum? Animi dignissimos temporibus beatae facere rem vero ipsum explicabo? Rerum earum reiciendis
+    fugit at perspiciatis ex reprehenderit, excepturi, ab suscipit natus laudantium pariatur debitis. In molestiae nemo
+    quisquam incidunt nulla impedit harum fugit? Tempore nostrum ipsa tenetur quidem odio, in impedit ut reiciendis
+    adipisci qui iure tempora veniam, eveniet velit, consequatur excepturi. Eos a suscipit maxime quisquam. Sapiente
+    odio sequi consequatur aspernatur, illo facilis! Sint aspernatur accusantium, consectetur repellat praesentium animi
+    veniam dignissimos vero pariatur, quo, doloremque dolorum ipsum at sunt? Veritatis quam itaque est voluptatem
+    asperiores voluptates pariatur accusantium sunt dolorum! Doloribus quae ab nostrum veniam, beatae illum magni
+    impedit. Consequuntur, debitis fugit officiis dolorem obcaecati necessitatibus blanditiis eveniet. Iure, pariatur ea
+    libero distinctio accusamus dicta tempora blanditiis. Reiciendis, numquam et, voluptatem accusamus, maxime vero
+    corporis dignissimos laborum aliquid aspernatur obcaecati soluta eius quisquam laboriosam cum consequatur repellat
+    delectus! Omnis, exercitationem similique laudantium pariatur debitis quasi at saepe error. Maiores consequuntur
+    blanditiis libero neque cum excepturi minus, a minima at, dolor nisi atque pariatur fuga numquam cupiditate ratione
+    asperiores tempore labore placeat beatae accusamus. Provident ipsa amet suscipit, laboriosam sint nam accusantium
+    inventore distinctio aperiam ad rerum, fuga libero, accusamus id molestiae nulla laudantium ratione! Velit
+    laboriosam maxime vero expedita dolore alias explicabo odio et beatae magnam quam facilis molestiae a,
+    reprehenderit, natus fugiat minima aperiam sapiente, magni eligendi ipsa sed aliquid quo blanditiis. Odit natus in
+    asperiores similique quia eius voluptatibus? Iure temporibus, quasi provident sit accusantium voluptas, expedita
+    accusamus consequatur voluptates officia maxime? Voluptatibus fugiat ratione corrupti sunt voluptatum
+    necessitatibus, quam veritatis nesciunt consequuntur dignissimos voluptas dolorum vel non alias. Eos quos iusto
+    laborum porro culpa veniam, possimus nesciunt, nobis nemo dignissimos nostrum quibusdam recusandae cumque! Beatae
+    culpa inventore accusamus dicta minus eaque suscipit nesciunt iste reprehenderit dignissimos perspiciatis fugit
+    accusantium sed, ratione consequuntur velit modi doloremque hic, vitae quae?
+  </p> -->
 
-    <div class="unit1-1">
-      unit 1.1
-    </div>
-
-    <div class="unit1-2">
-      <div class="unit1-2-1">
-        unit 1.2.1
-      </div>
-    </div>
-
-
+  <div class="div1"></div>
+  <div class="div2">
+    <div class="child"></div>
   </div>
-  <div class="unit2">
-    <div></div>
-  </div> -->
 
-  <div class="parent">
-    <div class="child1">Rohan</div>
-    <div class="child2">Manoj</div>
-  </div>
+  <!-- task: https://miro.medium.com/v2/resize:fit:1400/0*MKs6dgpDZmC23xov.png -->
 </body>
 
 </html>
