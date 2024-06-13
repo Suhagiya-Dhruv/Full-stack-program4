@@ -1,125 +1,58 @@
 <html>
 
 <head>
-  <title>Grid</title>
-  <style>
-    * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      font-size: 15px;
-    }
-
-    .box {
-      border: 1px solid blue;
-    }
-
-    .parent {
-      display: grid;
-      place-items: center;
-      /* grid-template-columns: 1fr 2fr 3fr; /* 500px , auto, fr */
-      /* grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr); */
-
-      /* grid-template: ; */
-      height: 500px;
-      width: 500px;
-      border: 2px solid red;
-      /* column-gap: 10px;
-      row-gap: 30px; */
-      /* gap: 50px; row column */
-      /* position: relative; */
-      /* display: flex;
-      align-items: center;
-      justify-content: center; */
-    }
-
-    .box1 {
-      /* position: absolute; */
-      height: 50px;
-      width: 50px;
-      /* top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); */
-      grid-column-start: 5;
-      grid-column-end: 2;
-
-      /* grid-column: 1/4; */
-
-      /* grid-row: 1/4; */
-
-      /* grid-area: 1/2/3/3; */
-      /* row-start , col-start , row-end, col-end */
-
-      /* order: 1 */
-    }
-
-    /* Units */
-
-    /* Absolute px cm in mm*/
-    /* Relative vw, vh, rem, em ,%*/
-
-    div {
-      /* font-size: 20px; */
-      background-color: red;
-      width: 100vw;
-    }
-
-    .units {
-      width: 80%;
-      background-color: green;
-      /* font-size: 20px; */
-      /* font-size: 1cm; */
-      /* font-size: 5mm; */
-      /* font-size: 1in; */
-
-      /* font-size: 3vw; */
-      /* font-size: 3vw; */
-
-      /* width: 100vw;
-      font-size: 24px;
-      background-color: red; */
-
-      /* font-size: 2rem; */
-      /* font-size: 2em; */
-      /* 1 rem = 10px */
-
-    }
-
-    .map{
-      /* border: 2px solid red; */
-      border-radius: 50px;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <!-- <header>
+    <h1>Logo</h1>
+    <ul>
+      <li>Menu 1</li>
+      <li>Menu 2</li>
+      <li>Menu 3</li>
+      <li>Menu 4</li>
+      <li>Menu 5</li>
+      <li>Menu 6</li>
+      <li>Menu 7</li>
+      <li>Menu 8</li>
+    </ul>
+    <button>Menu</button>
+  </header>
 
-  <!-- <div class="parent">
-    <div class="box box1">Cell 1</div> -->
-  <!-- <div class="box">Cell 2</div>
-    <div class="box">Cell 3</div>
-    <div class="box">Cell 4</div>
-    <div class="box">Cell 5</div>
-    <div class="box">Cell 6</div>
-    <div class="box">Cell 7</div>
-    <div class="box">Cell 8</div>
-    <div class="box">Cell 9</div>
-    <div class="box">Cell 10</div>
-    <div class="box">Cell 11</div>
-    <div class="box">Cell 12</div> -->
-  <!-- </div> -->
-
-  <!-- <div>
-    <p class="units">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, quia!</p>
+  <div class="image"></div>
+  <div class="card">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
   </div> -->
 
-  <iframe class="map" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0"></iframe>
+  <a href="">Home</a>
 
-<!-- Grid Garden : https://cssgridgarden.com/ -->
+
+  <div class="main">
+
+    <div class="main_box">
+      <div class="box"></div>
+      <div class="round">
+        <div class="image"></div>
+        <div class="point"></div>
+      </div>
+    </div>
+
+    <div class="main_box">
+      <div class="box"></div>
+      <div class="round">
+        <div class="image"></div>
+        <div class="point"></div>
+      </div>
+    </div>
+
+  </div>
 
 </body>
 
