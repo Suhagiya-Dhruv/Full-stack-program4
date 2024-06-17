@@ -1,151 +1,83 @@
-# CSS and HTML Concepts
+## Java Syntax & Operators
 
-This README provides an overview of some important CSS and HTML concepts, including animations, filters, backdrop filters, aspect-ratio, z-index, background images, linear gradients, and HTML redirects using an `<a>` tag.
-
-## Table of Contents
-
-- [Animations](#animations)
-- [Filters](#filters)
-- [Backdrop Filters](#backdrop-filters)
-- [Aspect-Ratio](#aspect-ratio)
-- [Z-Index](#z-index)
-- [Background Images](#background-images)
-- [Linear Gradients](#linear-gradients)
-- [References](#references)
-
-## Animations
-
-CSS animations allow you to animate transitions between different states of an element. An animation is defined using `@keyframes`, and the animation is applied to an element using the `animation` property.
-
-### Example1
-
-```css
-@keyframes slideIn {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-.element {
-  animation: slideIn 2s ease-in-out;
+```java
+public class Main
+{
+	public static void main(String[] args) {
+	    System.out.println("Hello World"); // Print
+	}
 }
 ```
 
-### Example2
+```java
+System.out.println() // nextline print in new line
+System.out.print() // netline print in same line
 
-```css
-@keyframes slideIn {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(0);
-  }
-  100%{
-    transform: translateX(-100%);
-  }
-}
+int a; // variable declaration
+int a = 10; // variable declaration and value assigned
+a = 20; // reassigned or update
 
-.element {
-  animation: slideIn 2s ease-in-out;
-}
 ```
 
-In this example, the `.element` will slide in from the left over 2 seconds.
+### Data Types
+- **int (Integer)** - use for rounded numbers like 1, 6, 8, 15, 989
+- **float** - use for floating numbers like 1, 5.2, 98, 875.25
+- **double** - use for large numbers like 1, 50.2, 9865789874
+---
+- **char (Character)** - use for single characters like 'f', '0', '2', '5'
+- **String** - used for store the word like "Hello", "World", "12"
+---
+- **bool (Boolean)** - used to store a true and false value
 
-## Filters
+### Type of Operators
+---
+1. Arithmetic Operators
+   - These operators are used to perform arithmetic/mathematical operations on operands. Examples: (+, -, \*, /, %)
+   
+2. Increment Operators
+   - This operator is used to perform increments by one (++)
+   - post-increment (v++)
+   - pre-increment (++v)
 
-CSS filters apply graphical effects like blur, brightness, contrast, and more to elements. This is particularly useful for images and backgrounds.
+3. Decrement Operators
+   - This operator is used to perform decrement by one (--)
+   - post decrement (v--)
+   - pre decrement (--v)
 
-### Example
+4. Relational Operators
+   - These are used for the comparison of the values of two operands. For example, checking if one operand is equal to the other operand or not, whether an operand is greater than the other operand or not, etc. Some of the relational operators are (==, >, <, >= , <=, != ) and those relational operators return either true or false
 
-```css
-.element {
-  filter: blur(5px) brightness(0.8);
-}
-```
+5. Logical Operators - Logical Operators are used to combine two or more conditions/constraints or to complement the evaluation of the original condition in consideration. The result of the operation of a logical operator is a Boolean value either true or false.
 
-This will apply a blur and decrease the brightness of the `.element`.
+   - AND (&&)
+     |Value 1| Value 2 | Answer |
+     |--|--|--|
+     | 0 |0 |0 |
+     | 0 |1 |0 |
+     | 1 |0 |0 |
+     | 1 |1 |1 |
+   - OR (||)
+     |Value 1| Value 2 | Answer |
+     |--|--|--|
+     | 0 |0 |0 |
+     | 0 |1 |1 |
+     | 1 |0 |1 |
+     | 1 |1 |1 |
+   - Not (!)
+     |Value 1| Answer |
+     |--|--|
+     | 0 | 1 |
+     | 1 |0 |
 
-## Backdrop Filters
+6. Bitwise Operators (Not requirement)
+   - The Bitwise operators are used to perform bit-level operations on the operands. The operators are first converted to bit-level and then the calculation is performed on the operands. Mathematical operations such as addition, subtraction, multiplication, etc. can be performed at the bit level for faster processing.
+   - AND (&)
+   - OR (|)
+   - Right shift (>>)
+   - Left shift (<<)
+   - Not(~)
+   - XOR(^)
 
-Backdrop filters apply effects to the area behind an element. This requires the element to have a semi-transparent background or be inside an element with a semi-transparent background.
-
-### Example
-
-```css
-.element {
-  backdrop-filter: blur(10px) brightness(0.5);
-  background-color: rgba(255, 255, 255, 0.5);
-}
-```
-
-This will blur and dim the background behind the `.element`.
-
-## Aspect-Ratio
-
-The `aspect-ratio` property is used to set a preferred aspect ratio for an element, maintaining the width to height ratio.
-
-### Example
-
-```css
-.element {
-  aspect-ratio: 16 / 9;
-}
-```
-
-This sets the aspect ratio of `.element` to 16:9.
-
-## Z-Index
-
-The `z-index` property determines the stacking order of elements. Higher values are placed in front of lower values. It only works on positioned elements (i.e., elements with `position` set to `relative`, `absolute`, `fixed`, or `sticky`).
-
-### Example
-
-```css
-.element {
-  position: relative;
-  z-index: 10;
-}
-```
-
-This positions the `.element` above other elements with a lower `z-index`.
-
-## Background Images
-
-CSS allows you to set background images for elements, which can be controlled with properties like `background-size`, `background-position`, and `background-repeat`.
-
-### Example
-
-```css
-.element {
-  background-image: url('image.jpg');
-  background-size: cover;
-  background-position: center;
-}
-```
-
-This sets `image.jpg` as the background of `.element`, covering the entire element and centering the image.
-
-## Linear Gradients
-
-Linear gradients create a smooth transition between two or more specified colors. They can be used anywhere you can use an image.
-
-### Example
-
-```css
-.element {
-  background: linear-gradient(to right, red, yellow);
-}
-```
-
-## References
-
-- [Website Template](https://templatemo.com/live/templatemo_559_zay_shop)
-- [Online Tutorials YouTube Channel](https://www.youtube.com/@OnlineTutorialsYT)
-- [Gradient Generator](https://mycolor.space/gradient?ori=circle&hex=%23435B5E&hex2=%23BFA0DC&sub=1)
-- [Bootstrap Documentation](https://getbootstrap.com/)
-- [MDN Web Docs](https://developer.mozilla.org/)
+7. Assignment Operators
+   - Assignment operators are used to assign value to a variable. The left side operand of the assignment operator is a variable and the right side operand of the assignment operator is a value. The value on the right side must be of the same data type as the variable on the left side otherwise the compiler will raise an error.
+   - Example (=, +=, -=, \*=, /=, %=)
