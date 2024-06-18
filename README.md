@@ -1,88 +1,107 @@
-## Java Syntax & Operators
+#### 1. **Basic If-Else Structure**
+
+An `if-else` statement evaluates a condition inside the parentheses. If the condition is `true`, the block of code within the `if` statement is executed. If the condition is `false`, the block of code within the `else` statement is executed (if present).
 
 ```java
-public class Main
-{
-	public static void main(String[] args) {
-	    System.out.println("Hello World"); // Print
-	}
+if (condition) {
+    // Executes when the condition is true
+} else {
+    // Executes when the condition is false
 }
 ```
 
+##### **Example**
+
 ```java
-System.out.println() // nextline print in new line
-System.out.print() // netline print in same line
+int a = 10;
+int b = 20;
 
-int a; // variable declaration
-int a = 10; // variable declaration and value assigned
-a = 20; // reassigned or update
-
+if (a > b) {
+    System.out.println("a is greater than b");
+} else {
+    System.out.println("a is less than or equal to b");
+}
 ```
 
-### Data Types
-- **int (Integer)** - use for rounded numbers like 1, 6, 8, 15, 989
-- **float** - use for floating numbers like 1, 5.2, 98, 875.25
-- **double** - use for large numbers like 1, 50.2, 9865789874
----
-- **char (Character)** - use for single characters like 'f', '0', '2', '5'
-- **String** - used for store the word like "Hello", "World", "12"
----
-- **bool (Boolean)** - used to store a true and false value
+In this example, since `a` (10) is not greater than `b` (20), the output will be "a is less than or equal to b".
 
-### Type of Operators
----
-1. Arithmetic Operators
-   - These operators are used to perform arithmetic/mathematical operations on operands. Examples: (+, -, \*, /, %)
-   
-2. Increment Operators
-   - This operator is used to perform increments by one (++)
-   - post-increment (v++)
-   - pre-increment (++v)
+#### 2. **If-Else-If Ladder**
 
-3. Decrement Operators
-   - This operator is used to perform decrement by one (--)
-   - post decrement (v--)
-   - pre decrement (--v)
+The `if-else-if` ladder is used to check multiple conditions sequentially. It allows you to execute different blocks of code based on which condition is true first.
 
-4. Relational Operators
-   - These are used for the comparison of the values of two operands. For example, checking if one operand is equal to the other operand or not, whether an operand is greater than the other operand or not, etc. Some of the relational operators are (==, >, <, >= , <=, != ) and those relational operators return either true or false
+```java
+if (condition1) {
+    // Executes when condition1 is true
+} else if (condition2) {
+    // Executes when condition2 is true
+} else {
+    // Executes when none of the conditions are true
+}
+```
 
-5. Logical Operators - Logical Operators are used to combine two or more conditions/constraints or to complement the evaluation of the original condition in consideration. The result of the operation of a logical operator is a Boolean value either true or false.
+##### **Example**
 
-   - AND (&&)
-     |Value 1| Value 2 | Answer |
-     |--|--|--|
-     | 0 |0 |0 |
-     | 0 |1 |0 |
-     | 1 |0 |0 |
-     | 1 |1 |1 |
-   - OR (||)
-     |Value 1| Value 2 | Answer |
-     |--|--|--|
-     | 0 |0 |0 |
-     | 0 |1 |1 |
-     | 1 |0 |1 |
-     | 1 |1 |1 |
-   - Not (!)
-     |Value 1| Answer |
-     |--|--|
-     | 0 | 1 |
-     | 1 |0 |
+```java
+int a = 10;
+int b = 20;
 
-6. Bitwise Operators (Not requirement)
-   - The Bitwise operators are used to perform bit-level operations on the operands. The operators are first converted to bit-level and then the calculation is performed on the operands. Mathematical operations such as addition, subtraction, multiplication, etc. can be performed at the bit level for faster processing.
-   - AND (&)
-   - OR (|)
-   - Right shift (>>)
-   - Left shift (<<)
-   - Not(~)
-   - XOR(^)
+if (a > b) {
+    System.out.println("a is greater than b");
+} else if (a < b) {
+    System.out.println("a is less than b");
+} else {
+    System.out.println("a is equal to b");
+}
+```
 
-7. Assignment Operators
-   - Assignment operators are used to assign value to a variable. The left side operand of the assignment operator is a variable and the right side operand of the assignment operator is a value. The value on the right side must be of the same data type as the variable on the left side otherwise the compiler will raise an error.
-   - Example (=, +=, -=, \*=, /=, %=)
+Here, since `a` (10) is less than `b` (20), the output will be "a is less than b".
 
-### Donwload Step
+#### 3. **Nested If-Else**
 
-1. https://download.oracle.com/java/22/latest/jdk-22_windows-x64_bin.msi for dowanlod java
-2. https://dlcdn.apache.org/netbeans/netbeans-installers/22/Apache-NetBeans-22-bin-windows-x64.exe for netbeans
+Nested `if-else` statements are used when you need to make further decisions inside another `if` or `else` block. This helps in handling more complex conditions.
+
+```java
+if (condition1) {
+    if (condition2) {
+        // Executes when both condition1 and condition2 are true
+    } else {
+        // Executes when condition1 is true but condition2 is false
+    }
+} else {
+    if (condition3) {
+        // Executes when condition1 is false and condition3 is true
+    } else {
+        // Executes when both condition1 and condition3 are false
+    }
+}
+```
+
+##### **Example**
+
+```java
+int a = 100;
+int b = 200;
+int c = 150;
+
+if (a > b) {
+    if (a > c) {
+        System.out.println("a is the greatest");
+    } else {
+        System.out.println("c is the greatest");
+    }
+} else {
+    if (b > c) {
+        System.out.println("b is the greatest");
+    } else {
+        System.out.println("c is the greatest");
+    }
+}
+```
+
+In this case, since `b` (200) is greater than both `a` (100) and `c` (150), the output will be "b is the greatest".
+
+### Summary
+
+- **If-Else Statements**: Evaluate a condition and execute code blocks based on whether the condition is true or false.
+- **If-Else-If Ladder**: Allows for checking multiple conditions in sequence, executing the corresponding block of code for the first true condition.
+- **Nested If-Else**: Enables more complex decision-making by nesting `if-else` statements inside each other.
