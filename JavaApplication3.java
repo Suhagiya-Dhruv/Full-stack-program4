@@ -1,78 +1,66 @@
 package javaapplication3;
 
+import java.util.*;
+
 public class JavaApplication3 {
 
     public static void main(String[] args) {
 
-        /* if else */
-//       if(false){
-//           System.out.println("Condition is false 1");
-//        
-//       System.out.println("Condition is false");
-//       }
+        // Loop
+        // while , do while
+//        int b = 1;
+//        while (b < 1) { // 1<5, 2<5,3<5, 4<5, 5<5
+//            System.out.println("While Loop");
+//               a = a+1; // 3
+//               
+//               System.out.println(a);
+//        }
+//        int a = 5;
+//        do {
+//            System.out.println(a);
+//            a = a-1;
+//        } while (a >= 0);
+        // for loop (variable; condition; opration)
+//        int a;
+//        for (a = 1; a < 5; a = a + 3) {
+//            System.out.println(a);
 //
-//       
-//       if(true)
-//           System.out.println("Condition is true");
-//        if(!true){
-//            System.out.println("True");
-//        }else{
-//            System.out.println("False");
+//            // a = a+1
 //        }
-//        int a = 1000;
-//        int b = 500;
-//        int c = 10000;
-        // a>b && a>c -> A
-        // c>a && c<b -> C
-        // b>c && b>a -> B
-//        a > b -> a > c -> A
-//        a > b -> a < c -> C
-//        a > b : b > a
-//        if(a>b){
-//            System.out.println("A is Big");
-//        }else{
-//            System.out.println("B is Big");
+        Scanner s = new Scanner(System.in);
+
+        int a = s.nextInt();
+
+//        int b = s.nextInt();
+//
+//        System.out.println("Sum : " + (a - b));
+//        System.out.println(a + " x " + 1 + " = " + a*1);        
+//        System.out.println(a + " x " + 2 + " = " + a*2);
+//        System.out.println(a + " x " + 3 + " = " + a*3);
+//        for(int i=1;i<=10;i++){
+//            System.out.println(a + " x " + i + " = " + a*i); 
 //        }
-//        if else if
-//        if(){
-//            
-//        }else if(){
-//            
-//        }else if(){
-//            
-//        }else if(){
+//Q : 6 -> 1+2+3+4+5+6  = 21
+// a = 7 -> 1+2+3+4+5+6+7 = 28
+/*
+       
+    i=1; i<=a ; i++ // 4
+       d = d+i = // 10
+        
+        
+    
+    System.out.print(d)
+
+         */
+//        int sum = 0;
+//        for(int i=1;i<=a;i++){
+//            sum = sum+i;
+//        }
 //        
-//        }else{
-//            
-//        }
-//        if (a > b) {
-//            System.out.println("A is Big");
-//        } else if (b > a) {
-//            System.out.println("B is Big");
-//        } else if(){
-//            System.out.println("Both number same");
-//        }
-//Nested if else
-//        int a = 10001;
-//        int b = 50000;
-//        int c = 10000;
-//        
-//        if (a > b) {
-//            if (a > c) {
-//                System.out.println("A is Big");
-//            } else {
-//                System.out.println("C is Big");
-//            }
-//        } else {
-//            if (b > c) {
-//                System.out.println("B is Big");
-//            } else {
-//                System.out.println("C is Big");
-//            }
-//        }
+//        System.out.println(sum);
 
 
-//        Loop -> while do while for
+//        switch case
     }
 
 }
