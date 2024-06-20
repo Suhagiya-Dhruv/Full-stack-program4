@@ -1,88 +1,136 @@
-### Java Control Flow: Loop Statements
+### Time Complexity Examples with For Loops
 
-Loops are used in Java to execute a block of code repeatedly. Java supports three main types of loops: `while`, `do-while`, and `for`. Here’s a detailed explanation of each with examples from your code:
+Here are different time complexities illustrated using the conditions of `for` loops in Java:
 
-#### 1. **While Loop**
+#### 1. **O(1) - Constant Time Complexity**
 
-The `while` loop is used to execute a block of code as long as a specified condition is true. The condition is evaluated before the execution of the loop body.
+In this example, the loop runs a fixed number of times, irrespective of the input size.
 
 ```java
-int b = 1;
-while (b < 5) { // condition is checked before executing the loop body
-    System.out.println("While Loop");
-    b = b + 1;
-    System.out.println(b);
+for (int i = 0; i < 10; i++) {
+    // Loop body executes 10 times, constant time
 }
 ```
 
-In this example, the loop continues to run as long as `b` is less than 5. Each iteration increments `b` by 1 and prints the value.
+#### 2. **O(log n) - Logarithmic Time Complexity**
 
-#### 2. **Do-While Loop**
-
-The `do-while` loop is similar to the `while` loop, but it guarantees that the loop body is executed at least once. The condition is evaluated after the execution of the loop body.
+Here, the loop condition reduces the problem size by half at each iteration.
 
 ```java
-int a = 5;
-do {
-    System.out.println(a);
-    a = a - 1;
-} while (a >= 0);
-```
-
-In this example, the loop body executes first, printing the value of `a` and then decrementing it by 1. The condition is checked after the loop body, ensuring the loop runs at least once.
-
-#### 3. **For Loop**
-
-The `for` loop is used for a known number of iterations. It consists of three parts: initialization, condition, and increment/decrement.
-
-```java
-for (int a = 1; a < 5; a = a + 3) {
-    System.out.println(a);
+for (int i = 1; i < n; i = i * 2) {
+    // Loop body executes log(n) times
 }
 ```
 
-In this example:
-- **Initialization**: `int a = 1;` (sets the starting value of `a`)
-- **Condition**: `a < 5;` (the loop runs as long as this condition is true)
-- **Increment/Decrement**: `a = a + 3` (increments `a` by 3 after each iteration)
+#### 3. **O(n) - Linear Time Complexity**
 
-#### 4. **Using Loops for Specific Tasks**
-
-##### **Reading Input with Scanner and Calculating**
+In this loop, the number of iterations is directly proportional to the input size.
 
 ```java
-Scanner s = new Scanner(System.in);
-int a = s.nextInt();
-```
-
-Here, `Scanner` is used to read an integer input from the user and store it in variable `a`.
-
-##### **Printing a Multiplication Table**
-
-```java
-for(int i = 1; i <= 10; i++) {
-    System.out.println(a + " x " + i + " = " + a * i);
+for (int i = 0; i < n; i++) {
+    // Loop body executes n times
 }
 ```
 
-This loop iterates from 1 to 10 and prints the multiplication table for the input number `a`.
+#### 4. **O(n log n) - Log-Linear Time Complexity**
 
-##### **Calculating the Sum of Natural Numbers**
+This complexity often arises from nested loops where the outer loop runs `n` times and the inner loop runs `log n` times.
 
 ```java
-int sum = 0;
-for(int i = 1; i <= a; i++) {
-    sum = sum + i;
+for (int i = 0; i < n; i++) {
+    for (int j = 1; j < n; j = j * 2) {
+        // Outer loop executes n times
+        // Inner loop executes log(n) times
+    }
 }
-System.out.println(sum);
 ```
 
-This loop calculates the sum of all natural numbers from 1 to `a` and prints the result.
+#### 5. **O(n^2) - Quadratic Time Complexity**
 
-### Summary
+This complexity is seen in nested loops where both loops iterate `n` times.
 
-- **While Loop**: Executes a block of code as long as the condition is true. The condition is checked before the loop body.
-- **Do-While Loop**: Similar to the while loop but guarantees at least one execution of the loop body. The condition is checked after the loop body.
-- **For Loop**: Used for a known number of iterations with initialization, condition, and increment/decrement.
+```java
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        // Loop body executes n * n = n^2 times
+    }
+}
+```
 
-Understanding these loops helps in performing repetitive tasks efficiently in Java.
+#### 6. **O(n!) - Factorial Time Complexity**
+
+This complexity can arise in loops involving permutations where the number of iterations grows factorially with the input size.
+
+```java
+// Example to demonstrate factorial complexity is complex and involves recursion or combinatorial generation
+// Here is an abstract loop to illustrate the factorial complexity
+
+for (int i = 0; i < factorial(n); i++) {
+    // Loop body executes n! times
+}
+```
+
+
+### 7. **O(n^3) - Cubic Time Complexity**
+
+This complexity arises in triple nested loops where each loop iterates `n` times.
+
+```java
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        for (int k = 0; k < n; k++) {
+            // Loop body executes n * n * n = n^3 times
+        }
+    }
+}
+```
+
+### 8. **O(2^n) - Exponential Time Complexity**
+
+Exponential time complexity can arise in loops where the number of iterations doubles with each increment.
+
+```java
+// Example to demonstrate exponential complexity usually involves recursion
+// Here is an abstract loop to illustrate exponential complexity
+
+for (int i = 0; i < Math.pow(2, n); i++) {
+    // Loop body executes 2^n times
+}
+```
+
+### 9. **O(sqrt(n)) - Square Root Time Complexity**
+
+This complexity can occur in loops that iterate up to the square root of `n`.
+
+```java
+for (int i = 0; i * i < n; i++) {
+    // Loop body executes sqrt(n) times
+}
+```
+
+### 10. **O(log(log(n))) - Double Logarithmic Time Complexity**
+
+This complexity can arise in scenarios where the number of iterations is a logarithm of a logarithm of the input size.
+
+```java
+for (int i = 2; i < n; i = Math.pow(i, 2)) {
+    // Loop body executes log(log(n)) times
+}
+```
+
+### 11. **O(n * log(n)) - Linearithmic Time Complexity**
+
+This is common in algorithms like merge sort or heap sort, where the outer loop runs `n` times and the inner loop runs `log(n)` times.
+
+```java
+for (int i = 0; i < n; i++) {
+    for (int j = i; j > 0; j = j / 2) {
+        // Outer loop executes n times
+        // Inner loop executes log(n) times
+    }
+}
+```
+
+Certainly! Here is the order of time complexities from lowest to highest:
+
+**O(1)** < **O(log(log(n)))** < **O(log(n))** < **O(sqrt(n))** < **O(n)** < **O(n * log(n))** < **O(n^2)** < **O(n^3)** < **O(2^n)** < **O(n!)**
