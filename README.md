@@ -1,127 +1,107 @@
-### Switch-Case Statement in Java
+# JavaScript Data Types and String Methods
 
-The `switch-case` statement in Java is a control flow statement that allows a variable to be tested for equality against a list of values. Each value is called a **case**, and the variable being switched on is checked for each case.
+JavaScript is a versatile programming language with several built-in data types and useful string methods. This document will guide you through the primitive data types, comment styles, variable declaration, string usage, and string methods in JavaScript.
 
-#### Structure
+## Data Types in JavaScript
 
-The general syntax for a `switch-case` statement is as follows:
+JavaScript has several primitive data types:
 
-```java
-switch (expression) {
-    case value1:
-        // Code to execute if expression equals value1
-        break;
-    case value2:
-        // Code to execute if expression equals value2
-        break;
-    // More cases...
-    default:
-        // Code to execute if none of the cases match
-        break;
-}
+1. **Number**: Represents both integer and floating-point numbers.
+    - Examples: `15`, `15.20`
+2. **Boolean**: Represents logical values `true` and `false`.
+    - Example: `true`
+3. **undefined**: Indicates a variable that has been declared but not yet assigned a value.
+4. **null**: Represents the intentional absence of any object value.
+5. **String**: Represents a sequence of characters.
+    - Examples: `"Hello"`, `'Hello'`, `` `Hello` ``
+6. **Symbol**: Represents a unique and immutable primitive value.
+
+## Comments
+
+JavaScript supports both single-line and multi-line comments.
+
+- **Single-line comment**: Prefixed with `//`.
+    ```javascript
+    // This is a single-line comment
+    ```
+- **Multi-line comment**: Enclosed within `/* ... */`.
+    ```javascript
+    /* 
+     This is a multi-line comment
+    */
+    ```
+
+## Variable Declaration
+
+Variables in JavaScript can be declared using `var`, `let`, or `const`.
+
+```javascript
+var a = 15;
+var b = 15.20;
+var c = "15";
+var d = true;
+var e;          // undefined
+var f = null;   // null
 ```
 
-#### Key Components
+## Logging and Type Checking
 
-1. **Expression**: The value being switched on. It must be of a type that can be compared using `==` (typically `int`, `char`, `short`, `byte`, `String`, or an `enum` type).
+The `console.log` function is used to print values to the console. The `typeof` operator returns a string indicating the type of the operand.
 
-2. **Case Labels**: These are the values that the expression is compared against. Each case label must be a constant and unique within the switch statement.
-
-3. **Break Statement**: The `break` statement is used to terminate a case in the switch statement. If omitted, the program continues executing the next case (fall-through behavior).
-
-4. **Default Case**: The `default` case is executed if no other case matches. It is optional but recommended to handle unexpected values.
-
-#### Example: Simple Calculator
-
-Here's an example of a `switch-case` statement that functions as a simple calculator:
-
-```java
-public class SimpleCalculator {
-    public static void main(String[] args) {
-        int a = 10;
-        int b = 5;
-        char operation = '+'; // Example operation
-
-        switch (operation) {
-            case '+':
-                System.out.println("Sum: " + (a + b));
-                break;
-            case '-':
-                System.out.println("Difference: " + (a - b));
-                break;
-            case '*':
-                System.out.println("Product: " + (a * b));
-                break;
-            case '/':
-                if (b != 0) {
-                    System.out.println("Quotient: " + (a / b));
-                } else {
-                    System.out.println("Division by zero is not allowed.");
-                }
-                break;
-            default:
-                System.out.println("Invalid operation.");
-                break;
-        }
-    }
-}
+```javascript
+console.log(a);                         // 15
+console.log(typeof b, b);               // number 15.20
+console.log(typeof c, c);               // string "15"
+console.log(typeof d, d);               // boolean true
+console.log(typeof e, e);               // undefined undefined
+console.log(typeof f, f);               // object null
+console.log(typeof typeof b);           // string
 ```
 
-#### Usage Scenarios
+## String Usage
 
-- **Menu-Driven Programs**: To select different options based on user input.
-- **State Machines**: For controlling state transitions.
-- **Enumerations**: To execute different code based on the value of an enum.
+Strings in JavaScript can be defined using double quotes (`"`), single quotes (`'`), or backticks (`` ` ``).
 
-#### Advantages
+```javascript
+var a = "Hello";  // Double quotes
+var b = 'Hello';  // Single quotes
+var c = `Hello`;  // Backticks (template literals)
 
-- **Readability**: Clear structure for multi-way branching.
-- **Efficiency**: Compilers can optimize `switch` statements better than if-else chains in some cases.
+var formula = "H2O";
+var f = `${c} This is the formula of water "${formula}"`;
 
-#### Disadvantages
-
-- **Limited Data Types**: Works with a limited set of types.
-- **Fall-Through Behavior**: Requires careful use of `break` statements to prevent unintentional fall-through.
-
-### Advanced Example: Nested Switch
-
-Nested `switch-case` statements are possible and can be used to handle more complex decision-making processes:
-
-```java
-public class NestedSwitchExample {
-    public static void main(String[] args) {
-        int year = 2;
-        char section = 'A';
-
-        switch (year) {
-            case 1:
-                System.out.println("First Year");
-                break;
-            case 2:
-                System.out.println("Second Year");
-                switch (section) {
-                    case 'A':
-                        System.out.println("Section A");
-                        break;
-                    case 'B':
-                        System.out.println("Section B");
-                        break;
-                    default:
-                        System.out.println("Invalid Section");
-                        break;
-                }
-                break;
-            case 3:
-                System.out.println("Third Year");
-                break;
-            default:
-                System.out.println("Invalid Year");
-                break;
-        }
-    }
-}
+console.log(f);  // "Hello This is the formula of water "H2O""
 ```
 
-This example demonstrates how a switch statement can be nested within another switch statement, allowing for more detailed and specific branching based on multiple variables.
+## String Methods
 
-The `switch-case` statement is a powerful tool in Java for managing complex branching logic in a clean and readable way, especially when dealing with a variable that can take on multiple distinct values.
+JavaScript provides various methods to manipulate strings.
+
+```javascript
+var a = `               This is the formula of water "${formula}"              `;
+
+// String length
+console.log(a.length);  // Number of characters in the string
+
+// Character at specific index
+console.log(a.charAt(34));  // Character at index 34
+
+// Splitting string into an array
+console.log(a.split());     // ["               This is the formula of water "H2O"              "]
+console.log(a.split(""));   // [" ", " ", " ", " ", " ", ...]
+console.log(a.split("is")); // ["               Th", " ", " the formula of water "H2O"              "]
+
+// Trimming whitespace
+console.log(a.trim());      // Removes whitespace from both ends
+
+// String concatenation
+var a = "hello";
+var b = " world";
+console.log(a + b);                    // "hello world"
+console.log(a.concat(b).concat(" 123456").concat("789"));  // "hello world 123456789"
+
+// Arithmetic with numbers
+var c = 5;
+var d = 10;
+console.log(c + d);  // 15
+```
