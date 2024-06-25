@@ -1,107 +1,135 @@
-# JavaScript Data Types and String Methods
+# JavaScript Non-Primitive Types and Operations
 
-JavaScript is a versatile programming language with several built-in data types and useful string methods. This document will guide you through the primitive data types, comment styles, variable declaration, string usage, and string methods in JavaScript.
+## Non-Primitive Types in JavaScript
 
-## Data Types in JavaScript
+JavaScript has several non-primitive types, including:
 
-JavaScript has several primitive data types:
+1. **Object**
+2. **Function**
+3. **Array**
 
-1. **Number**: Represents both integer and floating-point numbers.
-    - Examples: `15`, `15.20`
-2. **Boolean**: Represents logical values `true` and `false`.
-    - Example: `true`
-3. **undefined**: Indicates a variable that has been declared but not yet assigned a value.
-4. **null**: Represents the intentional absence of any object value.
-5. **String**: Represents a sequence of characters.
-    - Examples: `"Hello"`, `'Hello'`, `` `Hello` ``
-6. **Symbol**: Represents a unique and immutable primitive value.
+### Object
 
-## Comments
+Objects in JavaScript are collections of key-value pairs. They can be created using curly braces `{}`.
 
-JavaScript supports both single-line and multi-line comments.
-
-- **Single-line comment**: Prefixed with `//`.
-    ```javascript
-    // This is a single-line comment
-    ```
-- **Multi-line comment**: Enclosed within `/* ... */`.
-    ```javascript
-    /* 
-     This is a multi-line comment
-    */
-    ```
-
-## Variable Declaration
-
-Variables in JavaScript can be declared using `var`, `let`, or `const`.
+#### Example:
 
 ```javascript
-var a = 15;
-var b = 15.20;
-var c = "15";
-var d = true;
-var e;          // undefined
-var f = null;   // null
+var a = {
+    name: "John",
+    address: "Surat",
+    contact: {
+        phone: 87878787878,
+        email: "abc@gmail.com"
+    }
+};
 ```
 
-## Logging and Type Checking
+#### Accessing Object Properties:
 
-The `console.log` function is used to print values to the console. The `typeof` operator returns a string indicating the type of the operand.
+- **Dot Notation**: `a.name`
+- **Bracket Notation**: `a["name"]`
+
+#### Modifying Object Properties:
 
 ```javascript
-console.log(a);                         // 15
-console.log(typeof b, b);               // number 15.20
-console.log(typeof c, c);               // string "15"
-console.log(typeof d, d);               // boolean true
-console.log(typeof e, e);               // undefined undefined
-console.log(typeof f, f);               // object null
-console.log(typeof typeof b);           // string
+a.name = "Bob";
+a.contact.phone = "456465";
 ```
 
-## String Usage
-
-Strings in JavaScript can be defined using double quotes (`"`), single quotes (`'`), or backticks (`` ` ``).
+#### Adding and Deleting Properties:
 
 ```javascript
-var a = "Hello";  // Double quotes
-var b = 'Hello';  // Single quotes
-var c = `Hello`;  // Backticks (template literals)
-
-var formula = "H2O";
-var f = `${c} This is the formula of water "${formula}"`;
-
-console.log(f);  // "Hello This is the formula of water "H2O""
+a.name1 = 12;
+delete a.name;
 ```
 
-## String Methods
+### CRUD Operations on Objects
 
-JavaScript provides various methods to manipulate strings.
+- **Create**: Adding new properties
+- **Read**: Accessing existing properties
+- **Update**: Modifying existing properties
+- **Delete**: Removing properties
+
+### Array
+
+Arrays in JavaScript are list-like objects. They can hold multiple values of different types.
+
+#### Example:
 
 ```javascript
-var a = `               This is the formula of water "${formula}"              `;
+var a = [1, 2.262652, 3, "4", null, 6, false, 8, 9];
+```
 
-// String length
-console.log(a.length);  // Number of characters in the string
+#### Accessing and Modifying Array Elements:
 
-// Character at specific index
-console.log(a.charAt(34));  // Character at index 34
+```javascript
+a[3] = "40";
+```
 
-// Splitting string into an array
-console.log(a.split());     // ["               This is the formula of water "H2O"              "]
-console.log(a.split(""));   // [" ", " ", " ", " ", " ", ...]
-console.log(a.split("is")); // ["               Th", " ", " the formula of water "H2O"              "]
+#### Array Methods:
 
-// Trimming whitespace
-console.log(a.trim());      // Removes whitespace from both ends
+- **Push**: Adds elements to the end of an array
+  ```javascript
+  a.push(10, 11, 12);
+  ```
+- **Pop**: Removes the last element from an array
+  ```javascript
+  a.pop();
+  ```
+- **Shift**: Removes the first element from an array
+  ```javascript
+  a.shift();
+  ```
+- **Unshift**: Adds elements to the beginning of an array
+  ```javascript
+  a.unshift(5, 5, 10);
+  ```
 
-// String concatenation
-var a = "hello";
-var b = " world";
-console.log(a + b);                    // "hello world"
-console.log(a.concat(b).concat(" 123456").concat("789"));  // "hello world 123456789"
+#### Other Array Methods:
 
-// Arithmetic with numbers
-var c = 5;
-var d = 10;
-console.log(c + d);  // 15
+- **Join**: Combines all elements of an array into a string
+  ```javascript
+  a.join(", ");
+  ```
+- **Concat**: Merges two or more arrays
+  ```javascript
+  var c = a.concat(b);
+  ```
+
+### Looping Through an Array
+
+Using a `for` loop to iterate through each element:
+
+```javascript
+for (var i = 0; i < a.length; i++) {
+    console.log(a[i]);
+}
+```
+
+### Function
+
+Functions are reusable blocks of code designed to perform a particular task.
+
+#### Example:
+
+```javascript
+function run() {
+    console.log("This is the Function");
+}
+```
+
+#### Calling a Function:
+
+```javascript
+run();
+```
+
+### Determining Types
+
+Use the `typeof` operator to determine the type of a variable:
+
+```javascript
+console.log(typeof a); // object
+console.log(typeof run); // function
 ```

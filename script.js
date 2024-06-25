@@ -1,65 +1,110 @@
-// single line comment
+// Non-Primitive types
 
-/* 
- Multi line comment
-*/
+// 1. Object
+// 2. Function
 
-// var a = 15
-// var b = 15.20
-// var c = "15"
-// var d = true
-// var e
-// var f = null
+// 3. Array -> Object
+
+
+// var a = { // New Object created key : value
+//     name: "Jonh",
+//     address: "Surat",
+//     contact: {
+//         phone: 87878787878,
+//         email: "abc@gmail.com"
+//     }
+// }
+
+// dot notation /  [] notation
+
+// var b = "address"
+
+// console.log(typeof a);
+// console.log(a);
+// console.log(a.name, a["name"]);
+// console.log(a.address, a[b]) // a.b
+
+// console.log(a.contact.phone, a.contact["email"])
+
+// console.log(a.contact);
+
+// a.name = "Bob"
+// a.contact.phone = "456465"
+
+// console.log(a.contact);
 
 // console.log(a)
-// console.log(typeof typeof b , typeof b, b) //number 15
-// console.log(typeof c, c)
-// console.log(typeof d, d)
-// console.log(typeof e, e)
-// console.log(typeof f, f)
 
-// String
+// a.name1 = 12;
 
-// var a = "Hello" // -> ""  This is the formula of water "H20"
-// var b = 'Hello' // -> '' let's go
-// var c = `Hello` // -> backtrick
-
-// var d = "Let's go"
-
-var formula = "H2O"
-
-// var e = 'c This is the formula of water "H20"'
-var f = `${c} This is the formula of water "${formula}"`
-
+// delete a.name;
 
 // console.log(a)
-// console.log(b)
-// console.log(c)
-// console.log(d)
-// console.log(e)
-// console.log(f)
-
-// Methods
 
 
-// var a = `               This is the formula                          of water "${formula}"              `
+// CURD Opration
 
-// console.log(a, a.length) // -> stirng length - how many char in string
-// console.log(a, a.charAt(34)) // -> 34 - index
-// console.log(a.split()) // -> Array
-// console.log(a.split("")) // -> Array
-// console.log(a.split("is")) // -> Array
-// console.log(a.trim()) -> remove space 
-
-// var a = "hello"
-// var b = " world"
-
-// var c = 5;
-// var d = 10;
-
-// console.log(a+b)
-// console.log(a.concat(b).concat(" 123456").concat("789"))
-
-// console.log(c+d)
+// C - Create
+// U - Update
+// R - Read
+// D - Delete
 
 
+
+// Array [0 ..... n-1];
+
+// var a = [1, 2.262652, 3, "4", null, 6, false, 8, 9];
+
+// console.log(a)
+
+// a[3] = "40"
+
+// console.log(a)
+
+var a = [1, 2, 3, 4, 5]
+var b = [6, 7, 8, 9, 10]
+
+console.log(a)
+
+// a.push(0)
+// a.push(10, 11, 12, 13)
+
+// console.log(a)
+
+// a.pop()
+
+// console.log(a)
+
+// a.shift()
+
+// console.log(a)
+
+// a.unshift(5, 5, 10)
+
+// console.log(a)
+
+// console.log(a.join()) // return new string
+// console.log(a.join("")) // return new string
+// console.log(a.join(" 00 ")) // return new string
+
+// console.log(a.concat(b))
+
+// console.log(a.length)
+
+// for (var i = 0; i < a.length; i++) {
+//     console.log(a[i])
+// }
+
+// function 
+
+function run(){ // Callback funcation
+    console.log("This is the Function")
+}
+
+
+// Call
+
+console.log(typeof run)
+console.log(run)
+
+run() // Call
