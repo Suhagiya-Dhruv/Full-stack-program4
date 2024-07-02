@@ -1,60 +1,123 @@
-var a = 10;
-var b = 20;
+// Scoping
 
-a = a*b; // 200
+// var a = 15;
 
-b = a/b; // 200/20 -> 10
-a = a/b; // 200/10 -> 20
+// { // block
+//   var b = 20;
+//   console.log(b);
+// }
 
-console.log("A", a);
-console.log("B", b);
+// { // block
+//   let c = 25; // block scope
+//   const d = 40; // block scope
+//   console.log(c);
+//   console.log(d)
+// }
 
-// =====================================================
+// console.log(c)
+// console.log(d)
+// console.log(b);
+// console.log(a);
 
 
-var a = "ihelilo this is js lacture";
-var b = "i"
+// function hello(){
+//   var c = "123456";
+//   console.log(c)
 
-var c = a.split(b)
+//   {
+//     let c = 20; //
+//     console.log(c);
+//   }
 
-console.log(c.length-1)
+//   console.log(c);
+// }
 
-// console.log(a.split(""))
+// hello()
 
-// console.log(a.charAt());
 
-var count = 0
-for (var i = 0; i < a.length; i++) {
-  if (a.charAt(i) === b){
-    count++;
-  }
-}
+// var c = 20;
 
-console.log(count)
+// var c = 25;
+// let c = 20;
 
-//===========================================================
+// console.log(c)
 
-var a = "nayan";
 
-var i = 0;
-var j = a.length - 1;
 
-var flag = true
-while (j > i) {
+// var c = 15; // globle scope
+// function hello() {
+//   var c = "123456"; // local scope
+//   console.log(c)
 
-  if (a.charAt(i) !== a.charAt(j)) {
-    flag = false
-    break
-  }
-  i++;
-  j--;
+//   {
+//     let c = 20; //
+//     console.log(c);
+//   }
 
-}
+//   console.log(c);
+// }
 
-if(flag){
-  console.log("Palindrome")
-}else{
-  console.log("Not Palindrom")
-}
 
+// hello()
+// console.log(c)
+
+
+// console.log(c); // hoisting
+// debugger
+// var c = 15;
+
+// console.log(c)
+
+// console.log(d);
+
+// const d = 20;
+
+// How Js work
+// Run in 2 phase
+
+// 1. memory allocation
+// 2. code execution
+
+
+// console.log(v);
+// var v = "hello"
+
+// var v;
+// console.log(v)
+
+// function run() {
+//   console.log("Run function Called")
+// }
+
+// run()
+
+/*------- Not working in below example--------*/
+
+// run();
+
+// var run = function(){
+//   console.log("Run Function")
+// }
+
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// console.log(sum(5, 10))
+
+
+// ES6 - Arrow function
+
+// function sum(a, b) {
+//   return a + b;
+// }
+
+// var sum = (a, b) => { // Arrow Function
+//   return a + b;
+// }
+
+
+// var sum = (a, b) => a + b;
+
+// console.log(sum(5, 10))
 
