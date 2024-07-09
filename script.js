@@ -1,136 +1,101 @@
-/* Array Method */
-
-/*
-push
-pop
-shift
-unshift
-join -> string
-concat
-
-
-Slice -> doesn't change orignal array
-Splice
-map
-filter
-reduce
-
-return new array
-
-*/
-
-
-/* refernce */
-
-
-// const a = [1, 2, 3, 4, 5];
-
-// const b = a;
-
-// a[0] = 5;
-
-// b.push(6);
-
-// console.log("a", a)
-// console.log("b", b)
-
-
-// const a = [10, 25, 345, 448, 5451, true, "sdfsd", 's'];
-
-// const b = a.slice(); // new array
-// const b = a.slice(4); // new array
-// const b = a.slice(3, 4); // new array
-// const b = a.slice(2, -5); // new array
-
-// const b = a.splice(); // new array
-// const b = a.splice(4); // new array
-// const b = a.splice(3, 2); // new array
-// const b = a.splice(-2, 1); // new array
-// const b = a.splice(5, 0, "ssssss", "123")
-// const b = a.splice(3, 1, 4)
-
-// a[0] = 20;
-
-// console.log(a);
-// console.log(b);
-
-// const a = [2, 3, 4, 5, 6];
-
-// const b = []
-
-// for (let i = 0; i < a.length; i++) {
-//     b.push(a[i] * a[i]) // square
+// const obj = {
+//     a: "1",
+//     b: "2",
+//     c: "3",
+//     e: {
+//         a: "e1",
+//         b: "e2",
+//         c: "e3"
+//     }
 // }
 
-// console.log(b);
+// Object.preventExtensions(obj);
+// Object.preventExtensions(obj.e)
 
-// function square(value, index, array){
-// console.log(value*value)
-//     return value*value
+// obj.e.d = "e4" // (X)
+// obj.d = "e4" // (X)
+// delete obj.a;
+// obj.c = "33"
+
+// Object.seal(obj)
+
+// obj.e.d = "4" // (X)
+// delete obj.e.a; // (X)
+// obj.c = "33"
+
+// Object.freeze(obj)
+
+// obj.e.d = "4" // (X)
+// delete obj.e.a; // (X)
+// obj.e.c = "33" // (X)
+
+// console.log(obj)
+
+
+// const arr = [1, 2, 3, 4, 7]
+
+// const [a, c, b, d, e = 5, f = 6] = arr; // data destruction
+
+// const a = arr[0];
+// const b = arr[1];
+// const c = arr[2];
+
+// console.log(a, b, c, d, e, f)
+
+// const obj = {
+//     a: "1",
+//     b: "2",
+//     c: "3",
+//     e: {
+//         a: "1"
+//     },
+//     fn: () => {
+//         console.log("Function Called")
+//     }
 // }
 
-// const b = a.map(square) // return new array
 
-// console.log(b)
+// const { a, c, b, e, d = "123", fn } = obj;
 
+// console.log(a, b, c, e, d, fn)
 
-// const b = a.map(function (value, index, array) {
-//     return value * value
-// })
-
-// console.log(b)
-
-// const b = a.map((value) => value * value * value)
-
-// console.log(a);
-// console.log(b);
-
-// const a = [2, 3, 4, 5, 6];
-
-// const b = []
-
-// for (let i = 0; i < a.length; i++) {
-//     if (a[i] % 2 === 0)
-//         b.push(a[i])
+// const obj = {
+//     fname: "john",
+//     lname: "shah",
+//     fn: function () {
+//         console.log(this.fname + " " + this.lname)
+//     }
 // }
 
-// console.log(b)
+function joinName(age, address) {
+    console.log(this.fname + " " + this.lname + " ", age , address)
+}
 
-// function even(value, index, array) {
-
-// if(value%2 == 0){
-//     return true;
-// }
-// return false
-
-//     return value % 2 === 0
-// }
-
-// const b = a.filter(even);
-// const b = a.filter((value) => value%2 === 0);
-
-// console.log(b)
+// joinName()
 
 
-// recude -> single value
+const obj = {
+    fname: "john",
+    lname: "value"
+}
 
-// const a = [1, 2, 3, 4, 5];
+// Call Method
 
-// let sum = 0;
+// joinName.call(obj, 18, " surat")
 
-// for (let i = 0; i < a.length; i++) {
-//     sum += a[i];
-// }
+// bind Method
 
-// console.log(sum)
+// const c = joinName.bind(obj, 18, " surat")
+// c()
 
-// function sumHandler(acclator, currvalue) {
-//     console.log(acclator, currvalue)
-//     return acclator - currvalue;
-// }
+// apply
 
-// const sum = a.reduce(sumHandler, 10)
+// joinName.apply(obj, [18, " surat"])
 
-// const sum = a.reduce((acc, curr) => acc + curr, 10)
+// obj1.fn()
 
-// console.log(sum)
+// obj.fn(); // Method
+
+// const b = obj.fn;
+
+// b(); // function

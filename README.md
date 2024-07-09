@@ -1,118 +1,122 @@
-# Array Methods in JavaScript
+Sure! Here is an explanation and example for each JavaScript concept you mentioned:
 
-## Basic Methods
+### 1. `Object.preventExtensions`
 
-### `push`
-- **Description:** Adds one or more elements to the end of an array.
-- **Mutability:** Mutates the original array.
+`Object.preventExtensions` prevents new properties from being added to an object, but allows existing properties to be changed or deleted.
 
-### `pop`
-- **Description:** Removes the last element from an array and returns that element.
-- **Mutability:** Mutates the original array.
+**Example:**
 
-### `shift`
-- **Description:** Removes the first element from an array and returns that element.
-- **Mutability:** Mutates the original array.
-
-### `unshift`
-- **Description:** Adds one or more elements to the beginning of an array.
-- **Mutability:** Mutates the original array.
-
-### `join`
-- **Description:** Joins all elements of an array into a string.
-- **Mutability:** Does not mutate the original array.
-
-### `concat`
-- **Description:** Merges two or more arrays.
-- **Mutability:** Does not mutate the original array.
-
-## Methods that Return a New Array
-
-### `slice`
-- **Description:** Returns a shallow copy of a portion of an array into a new array object.
-- **Mutability:** Does not mutate the original array.
-
-### `splice`
-- **Description:** Changes the contents of an array by removing or replacing existing elements and/or adding new elements.
-- **Mutability:** Mutates the original array.
-
-### `map`
-- **Description:** Creates a new array populated with the results of calling a provided function on every element in the calling array.
-- **Mutability:** Does not mutate the original array.
-
-### `filter`
-- **Description:** Creates a new array with all elements that pass the test implemented by the provided function.
-- **Mutability:** Does not mutate the original array.
-
-### `reduce`
-- **Description:** Executes a reducer function (that you provide) on each element of the array, resulting in a single output value.
-- **Mutability:** Does not mutate the original array.
-
-## Examples of Array Methods
-
-### `push`
 ```javascript
-const a = [1, 2, 3];
-a.push(4); // a is now [1, 2, 3, 4]
+const obj = { a: "1", b: "2", c: "3", e: { a: "e1", b: "e2", c: "e3" } };
+
+Object.preventExtensions(obj);
+Object.preventExtensions(obj.e);
+
+// Attempting to add new properties will fail
+obj.e.d = "e4"; // (X)
+obj.d = "e4"; // (X)
+
+// Deleting or modifying existing properties is allowed
+delete obj.a; 
+obj.c = "33";
 ```
 
-### `pop`
+### 2. `Object.seal`
+
+`Object.seal` prevents new properties from being added or existing properties from being deleted, but allows modification of existing properties.
+
+**Example:**
+
 ```javascript
-const a = [1, 2, 3];
-const last = a.pop(); // last is 3, a is now [1, 2]
+Object.seal(obj);
+
+// Attempting to add or delete properties will fail
+obj.e.d = "4"; // (X)
+delete obj.e.a; // (X)
+
+// Modifying existing properties is allowed
+obj.c = "33";
 ```
 
-### `shift`
+### 3. `Object.freeze`
+
+`Object.freeze` prevents new properties from being added, existing properties from being deleted, or existing properties from being changed.
+
+**Example:**
+
 ```javascript
-const a = [1, 2, 3];
-const first = a.shift(); // first is 1, a is now [2, 3]
+Object.freeze(obj);
+
+// Attempting to add, delete, or modify properties will fail
+obj.e.d = "4"; // (X)
+delete obj.e.a; // (X)
+obj.e.c = "33"; // (X)
 ```
 
-### `unshift`
+### 4. Array Destructuring
+
+Array destructuring allows for unpacking values from arrays into distinct variables.
+
+**Example:**
+
 ```javascript
-const a = [1, 2, 3];
-a.unshift(0); // a is now [0, 1, 2, 3]
+const arr = [1, 2, 3, 4, 7];
+const [a, c, b, d, e = 5, f = 6] = arr; // Destructuring
+
+console.log(a, b, c, d, e, f); // 1, 3, 2, 4, 7, 6
 ```
 
-### `join`
+### 5. Object Destructuring
+
+Object destructuring allows for unpacking values from objects into distinct variables.
+
+**Example:**
+
 ```javascript
-const a = [1, 2, 3];
-const str = a.join('-'); // str is "1-2-3"
+const obj = {
+    a: "1",
+    b: "2",
+    c: "3",
+    e: { a: "1" },
+    fn: () => {
+        console.log("Function Called");
+    }
+};
+
+const { a, c, b, e, d = "123", fn } = obj;
+
+console.log(a, b, c, e, d, fn); // "1", "2", "3", { a: "1" }, "123", function reference
 ```
 
-### `concat`
+### 6. `this` Keyword and Function Binding
+
+The `this` keyword refers to the context in which a function is executed. Methods like `call`, `apply`, and `bind` allow you to explicitly set the value of `this`.
+
+**Example:**
+
 ```javascript
-const a = [1, 2, 3];
-const b = [4, 5, 6];
-const c = a.concat(b); // c is [1, 2, 3, 4, 5, 6]
+const obj = {
+    fname: "john",
+    lname: "shah",
+    fn: function () {
+        console.log(this.fname + " " + this.lname);
+    }
+};
+
+function joinName(age, address) {
+    console.log(this.fname + " " + this.lname + " ", age, address);
+}
+
+// Using call method
+joinName.call(obj, 18, "surat");
+
+// Using apply method
+joinName.apply(obj, [18, "surat"]);
+
+// Using bind method
+const boundJoinName = joinName.bind(obj, 18, "surat");
+boundJoinName();
 ```
 
-### `slice`
-```javascript
-const a = [1, 2, 3, 4, 5];
-const b = a.slice(1, 3); // b is [2, 3]
-```
-
-### `splice`
-```javascript
-const a = [1, 2, 3, 4, 5];
-const removed = a.splice(2, 2); // removed is [3, 4], a is now [1, 2, 5]
-```
-
-### `map`
-```javascript
-const a = [1, 2, 3];
-const b = a.map(x => x * x); // b is [1, 4, 9]
-```
-
-### `filter`
-```javascript
-const a = [1, 2, 3, 4, 5];
-const b = a.filter(x => x % 2 === 0); // b is [2, 4]
-```
-
-### `reduce`
-```javascript
-const a = [1, 2, 3, 4, 5];
-const sum = a.reduce((acc, curr) => acc + curr, 0); // sum is 15
-```
+### Website Task
+[text](https://themewagon.github.io/hairnic/index.html)
