@@ -1,111 +1,69 @@
-/* Closuer */
+// console.log(true);
+// console.log(false);
 
+// console.log("Empty String: ",Boolean("")); // empty string
+// console.log("0: ",Boolean(0)); // false
+// console.log("-1: ",Boolean(-1)); // true
+// console.log("500: ",Boolean(500)); // true
+// console.log("null: ",Boolean(null)) // false
+// console.log("undefined: ",Boolean(undefined)) // false
+// console.log("[]: ", Boolean([])) // true
+// console.log("{}: ", Boolean({})) // true
 
-/* 
- 
-{
-
-  let a = 15;
-}
-
-console.log(a);
-
-clouser data encapsulates
-
-*/
-
-/* HOF => Higher order function 
-
-  -> 1 araguments as function
-  -> 2 return function
-
-*/
-
-
-// function run() {
-//   return function () {
-//      console.log('Hello World');
-//     // return "Hello World"
-//   }
+// if(null){
+//   console.log("Inside IF")
 // }
 
-// const a = run;
-// const b = run();
-// const c = run()();
+// console.log([] == [])
+// console.log({} == {})
+// console.log(typeof[] == typeof[])
+// console.log({} == [])
+// console.log(typeof{} == typeof[])
 
-// console.log("A: " + a) // 
-// console.log("B: " + b)
-// console.log("C: " + run()())
 
-// function division(a, b, c) {
+// const a = [];
 
-//   if (c(b)) {
-//     return a / b;
-//   }
+// console.log(Array.isArray(a)) // true
 
-//   return "Error: Division by zero is not allowed"
-
+// function alert(a) {
+//   console.log(a)
 // }
 
-// function checkZero(a) {
-//   if (a === 0) {
-//     return false;
-//   }
-//   return true;
-// }
-
-// const ans = division(10, 2, checkZero)
-// console.log(ans)
+// alert("Okay..!")
+// confirm("Are you sure...!")
+// prompt("Age...!")
 
 
+// console.log(btoa("Hello")) // string -> base64
+// console.log(atob("SGVsbG8=")) // base64 -> string
 
-// function outer() {
-//   let a = 10;
-//   return function inner() {
-//     a++;
-//     console.log(a);
-//   }
-// }
 
-// const b = outer();
-// b()
-// b()
-// b()
-// b()
-// b()
+// DOM -> Document Object Model
 
-// Function chaining
+// DOM Manipulation
 
-function run() {
-  return {
-    x: 0,
-    y: 0,
-    z: 0,
-    top: function () {
-      this.y += 1;
-      return this;
-    },
-    bottom: function () {
-      this.y -= 1;
-      return this;
-    },
-    left: function () {
-      this.x -= 1
-      return this;
-    },
-    right: function () {
-      this.x += 1;
-      return this;
-    },
-    visible: function () {
-      return { x: this.x, y: this.y };
-    }
-  }
-}
+// querySelector
 
-const obj = run();
-console.log(obj.visible())
+// ID
 
-obj.top().top().top().top().top().right().right().bottom()
+const id = document.getElementById("unique")
+console.log(id, id.innerText)
 
-console.log(obj.visible());
+// Class
+
+const c1 = document.getElementsByClassName("box")
+console.log(c1)
+
+// Tag
+
+const tag = document.getElementsByTagName("H1")
+console.log(tag)
+
+
+// querySelector, querySelectorAll
+
+const a = document.querySelector("#unique") // single
+console.log(a)
+
+const b = document.querySelectorAll(".box")
+console.log(b)
