@@ -1,69 +1,57 @@
-// console.log(true);
-// console.log(false);
+// Event Handler
 
-// console.log("Empty String: ",Boolean("")); // empty string
-// console.log("0: ",Boolean(0)); // false
-// console.log("-1: ",Boolean(-1)); // true
-// console.log("500: ",Boolean(500)); // true
-// console.log("null: ",Boolean(null)) // false
-// console.log("undefined: ",Boolean(undefined)) // false
-// console.log("[]: ", Boolean([])) // true
-// console.log("{}: ", Boolean({})) // true
+// const btn1 = document.getElementById('click');
+// const btn2 = document.getElementById('dblclick');
 
-// if(null){
-//   console.log("Inside IF")
+// let count = 0;
+// function clickBtn() {
+//     console.log("Button Clicked", count++)
+//     // if (count == 5)
+//     //     btn.removeEventListener('click', clickBtn)
 // }
 
-// console.log([] == [])
-// console.log({} == {})
-// console.log(typeof[] == typeof[])
-// console.log({} == [])
-// console.log(typeof{} == typeof[])
-
-
-// const a = [];
-
-// console.log(Array.isArray(a)) // true
-
-// function alert(a) {
-//   console.log(a)
+// function dblClick(){
+//     console.log("Double clicked")
 // }
 
-// alert("Okay..!")
-// confirm("Are you sure...!")
-// prompt("Age...!")
+
+// btn1.addEventListener('click', clickBtn) // Event name, function
+// btn2.addEventListener('dblclick', dblClick) // Event name, function
 
 
-// console.log(btoa("Hello")) // string -> base64
-// console.log(atob("SGVsbG8=")) // base64 -> string
+
+//=================== Couneter ===========================//
+
+const desc = document.getElementById("desc");
+const reset = document.getElementById("reset");
+const inc = document.getElementById("inc");
 
 
-// DOM -> Document Object Model
+const h1 = document.getElementById("count");
 
-// DOM Manipulation
+let count = 0;
+// function decfn() {
+//     count--;
+//     h1.innerText = count
+// }
 
-// querySelector
+function resetfn() {
+    count = 0;
+    h1.innerText = count
+}
 
-// ID
-
-const id = document.getElementById("unique")
-console.log(id, id.innerText)
-
-// Class
-
-const c1 = document.getElementsByClassName("box")
-console.log(c1)
-
-// Tag
-
-const tag = document.getElementsByTagName("H1")
-console.log(tag)
+// function incfn() {
+//     count++;
+//     h1.innerText = count
+// }
 
 
-// querySelector, querySelectorAll
-
-const a = document.querySelector("#unique") // single
-console.log(a)
-
-const b = document.querySelectorAll(".box")
-console.log(b)
+desc.addEventListener('click', function () {
+    count--;
+    h1.innerText = count
+});
+reset.addEventListener('click', resetfn);
+inc.addEventListener('click', ()=>{
+    count++;
+    h1.innerText = count
+});
