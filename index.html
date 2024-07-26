@@ -1,53 +1,86 @@
 <!DOCTYPE html>
-<HtMl lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        /* #id {
-            color: red
-        } */
-
-        .div#id .child1{
-            color: green
-        }
-
-        .div .child1 {
-            color: blue;
-        }
-
-        .child1 {
-            color: red;
-            font-size: 24px;
-        }
-
-    </style>
+    <title>Slice</title>
 </head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
 
+    .slices {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        border-radius: 5px;
+        margin-top: 50px;
+        width: 100%;
+    }
 
+    .slice {
+        width: 50%;
+        height: 30vh;
+        display: none;
+    }
 
-<boDy>
-    <!-- <h1 id="click">Click</h1> -->
-    <!-- <h1 id="click" onclick="clickBtn()">Click</h1> -->
+    .box1 {
+        background-color: lightblue;
+    }
 
-    <!-- <button id="click">1 click</button>
-    <button id="dblclick">2 click</button> -->
+    .box2 {
+        background-color: lightgreen;
+    }
 
+    .box3 {
+        background-color: lightyellow;
+    }
 
-    <!-- <h3>Couneter</h3>
-    <h1 id="count">0</h1>
-    <button id="desc">Descrement</button>
-    <button id="reset">Reset</button>
-    <button id="inc">Increment</button> -->
+    .box4 {
+        background-color: lightpink;
+    }
 
-    <div class="div" id="id">
-        <div class="child1">child 1</div>
-        <div class="child2">child 2</div>
+    .box5 {
+        background-color: lightsalmon;
+    }
+
+    .box6 {
+        background-color: lightskyblue;
+    }
+
+    .box7 {
+        background-color: rgb(17, 65, 65);
+    }
+
+    .visible {
+        display: block;
+    }
+</style>
+
+<body>
+    <button onclick="addNewSlider()">Add Slider</button>
+    <div class="slices">
+        <div class="slice box1 visible"></div>
+        <div class="slice box2"></div>
+        <div class="slice box3"></div>
+
     </div>
-    <!-- <script src="./script.js"></> -->
-</boDy>
+    <div class="slices">
+        <!-- <button class="btn" onclick="sliderHandelr1()">1</button>
+        <button class="btn" onclick="sliderHandelr2()">2</button>
+        <button class="btn" onclick="sliderHandelr3()">3</button> -->
 
-</htMl>
+        <button class="btn" onclick="sliderHandelr(1)">1</button>
+        <button class="btn" onclick="sliderHandelr(2)">2</button>
+        <button class="btn" onclick="sliderHandelr(3)">3</button>
+
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,57 +1,64 @@
-// Event Handler
+let slide = document.querySelectorAll(".slice")
+const slices = document.querySelectorAll(".slices")
 
-// const btn1 = document.getElementById('click');
-// const btn2 = document.getElementById('dblclick');
+let children = slide.length;
+let maxSlider = 7;
 
-// let count = 0;
-// function clickBtn() {
-//     console.log("Button Clicked", count++)
-//     // if (count == 5)
-//     //     btn.removeEventListener('click', clickBtn)
-// }
-
-// function dblClick(){
-//     console.log("Double clicked")
-// }
-
-
-// btn1.addEventListener('click', clickBtn) // Event name, function
-// btn2.addEventListener('dblclick', dblClick) // Event name, function
-
-
-
-//=================== Couneter ===========================//
-
-const desc = document.getElementById("desc");
-const reset = document.getElementById("reset");
-const inc = document.getElementById("inc");
-
-
-const h1 = document.getElementById("count");
-
-let count = 0;
-// function decfn() {
-//     count--;
-//     h1.innerText = count
-// }
-
-function resetfn() {
-    count = 0;
-    h1.innerText = count
+function reset() {
+    for (let i = 0; i < slide.length; i++) {
+        slide[i].classList.remove("visible")
+    }
 }
 
-// function incfn() {
-//     count++;
-//     h1.innerText = count
+// function sliderHandelr1() {
+//     reset()
+//     console.log("sliderHandelr1");
+//     slide[0].classList.add("visible");
 // }
 
+// function sliderHandelr2() {
+//     reset()
+//     console.log("sliderHandelr2");
+//     slide[1].classList.add("visible");
+// }
 
-desc.addEventListener('click', function () {
-    count--;
-    h1.innerText = count
-});
-reset.addEventListener('click', resetfn);
-inc.addEventListener('click', ()=>{
-    count++;
-    h1.innerText = count
-});
+// function sliderHandelr3() {
+//     reset()
+//     console.log("sliderHandelr3");
+//     slide[2].classList.add("visible");
+// }
+
+function sliderHandelr(index) {
+    reset()
+    console.log("sliderHandelr", index);
+    slide[index - 1].classList.add("visible");
+}
+
+
+function addNewSlider() {
+    children++;
+
+    // if (children > maxSlider) {
+    //     alert("Too many children")
+    //     return;
+    // }
+    const div = document.createElement("div");
+    div.classList.add("slice");
+    div.style.backgroundColor = "black";
+
+
+    const btn = document.createElement("button");
+    btn.innerText = children;
+    btn.setAttribute("class", "btn");
+    btn.setAttribute("onclick", `sliderHandelr(${children})`)
+    // btn.addEventListener('click', () => {
+    //     sliderHandelr(children)
+    // })
+
+    slices[0].appendChild(div)
+    slices[1].appendChild(btn)
+
+    slide = document.querySelectorAll(".slice")
+
+
+}
