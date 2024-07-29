@@ -26,6 +26,8 @@
         width: 50%;
         height: 30vh;
         display: none;
+        align-items: center;
+        justify-content: center;
     }
 
     .box1 {
@@ -57,6 +59,14 @@
     }
 
     .visible {
+        display: flex;
+    }
+
+    .remove {
+        display: none;
+    }
+
+    .visible:hover .remove {
         display: block;
     }
 </style>
@@ -64,9 +74,9 @@
 <body>
     <button onclick="addNewSlider()">Add Slider</button>
     <div class="slices">
-        <div class="slice box1 visible"></div>
-        <div class="slice box2"></div>
-        <div class="slice box3"></div>
+        <div class="slice box1 visible">
+            <button class="remove" onclick="removeslice(this)">Remove</button>
+        </div>
 
     </div>
     <div class="slices">
@@ -74,9 +84,7 @@
         <button class="btn" onclick="sliderHandelr2()">2</button>
         <button class="btn" onclick="sliderHandelr3()">3</button> -->
 
-        <button class="btn" onclick="sliderHandelr(1)">1</button>
-        <button class="btn" onclick="sliderHandelr(2)">2</button>
-        <button class="btn" onclick="sliderHandelr(3)">3</button>
+        <button class="btn" data-index="1" data-id="1" onclick="sliderHandelr(1)">1</button>
 
     </div>
 

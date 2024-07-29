@@ -10,6 +10,7 @@ function reset() {
     }
 }
 
+
 // function sliderHandelr1() {
 //     reset()
 //     console.log("sliderHandelr1");
@@ -28,12 +29,34 @@ function reset() {
 //     slide[2].classList.add("visible");
 // }
 
+let currentSlide = "1";
 function sliderHandelr(index) {
     reset()
-    console.log("sliderHandelr", index);
+    currentSlide = String(index);
     slide[index - 1].classList.add("visible");
 }
 
+function randomColor() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    // rgb(255,255,255)
+    return `rgb(${red},${green},${blue})`;
+}
+
+function removeslice(slice) {
+    slice.parentNode.remove()
+
+    const buttonSlice = document.querySelectorAll(".btn");
+    for (let i = 0; i < buttonSlice.length; i++) {
+        const { index } = buttonSlice[i].dataset
+
+        if (currentSlide === index) {
+            buttonSlice[i].remove()
+        }
+    }
+}
 
 function addNewSlider() {
     children++;
@@ -44,11 +67,18 @@ function addNewSlider() {
     // }
     const div = document.createElement("div");
     div.classList.add("slice");
-    div.style.backgroundColor = "black";
+    div.style.backgroundColor = randomColor(); // random color
 
+    const removeBtn = document.createElement("button");
+    removeBtn.innerText = "remove";
+    removeBtn.setAttribute("class", "remove");
+    removeBtn.setAttribute("onclick", `removeslice(this)`)
+    div.appendChild(removeBtn)
 
     const btn = document.createElement("button");
     btn.innerText = children;
+    //dataset
+    btn.setAttribute("data-index", children);
     btn.setAttribute("class", "btn");
     btn.setAttribute("onclick", `sliderHandelr(${children})`)
     // btn.addEventListener('click', () => {
