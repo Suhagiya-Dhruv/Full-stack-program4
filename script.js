@@ -1,56 +1,43 @@
-let box = document.querySelectorAll(".box")
-const continer = document.getElementById("continer");
+// const string = "kjfabkbbababkjiehgx";
 
-function newChar() {
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// const a = 'a';
+// const b = 'b';
 
-    const i = Math.floor(Math.random() * 26);
-    return alphabet.charAt(i)
-}
+// let count = 0;
+// let ans = 0;
 
-function randomPosition() {
+// for(let i=string.length -1;i>=0;i--){
+//   if(string.charAt(i) === a){
+//     ans += count;
+//   }else if(string.charAt(i) === b){
+//     count++;
+//   }
+// }
 
-    const top = Math.floor(Math.random() * 8.7) * 10
-    const left = Math.floor(Math.random() * 9.7) * 10
+// console.log(ans);
 
-    return { top, left }
-}
-
-function createNewElement() {
-    const char = newChar()
-    const div = document.createElement("div");
-    div.setAttribute("class", "box");
-
-    let { top, left } = randomPosition();
-
-    for (let i = 0; i < box.length; i++) {
-        if (box[i].style.top === `${top}%` && box[i].style.left === `${left}%`) {
-            console.log(box[i].style.top, box[i].style.left)
-            top = randomPosition().top;
-            left = randomPosition().left;
+function findValue(a, b) {
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] === b) {
+            return true;
         }
     }
-    // 
-
-    div.style.top = `${top}%`
-    div.style.left = `${left}%`
-    div.dataset.key = char;
-    div.innerText = char;
-
-    continer.appendChild(div)
-
-    box = document.querySelectorAll(".box")
-
+    return false;
 }
-document.addEventListener("keyup", (event) => {
-    for (let i = 0; i < box.length; i++) {
-        const elemKey = box[i].dataset.key
-        if (elemKey === event.key.toUpperCase()) {
-            console.log("matched")
-            box[i].remove();
-            break;
-        }
-    }
-    createNewElement();
-})
+const array = [-50, -5, -1, 1, 1, 2, 4, 6, 7, 8, 90, 99, 108, 109]
+const sum = 13;
 
+let value = false;
+
+for (let i = array.length - 1; i >= 0; i--) {
+    const a = array[i];
+    const b = sum - a;
+    value = findValue(array, b);
+    if (value) {
+        break;
+    }
+}
+
+value ? console.log("sum possible") : console.log("not");
+
+// task: same question to be completed using two pointer methods
