@@ -1,40 +1,47 @@
-// 
+const timer = document.getElementById('timer');
+const audio = document.getElementById('audio');
 
-// console.log("1");
+// console.log(timer.getBoundingClientRect()) // {top, left, right, bottom, height, width,x ,y}
 
-// setTimeout(() => {
-//     console.log("2")
-// }, 3000)
-// function callSetTimeout() {
-//     console.log("3");
-// }
+let time = 5;
+let timerOn = false;
+timer.innerText = time;
+let btn;
+function timerHandler(button) {
+    btn = button
+    timerOn = !timerOn;
+    button.innerText = timerOn ? "Stop" : "Start";
+}
 
-// // // callSetTimeout();
-// const id = setTimeout(callSetTimeout, 2000) // function, (seconds miliseconds)
-// console.log("4")
+function resetHandler() {
+    time = 16;
+}
 
+let count = 1;
 
-// 1000ms -> 1s
+function audioPlayer() {
+    const audioId = setInterval(() => {
+        audio.play();
+        count++;
+        if (count == 10) {
+            clearInterval(audioId);
+            count = 0;
+        }
+    }, 1000)
+}
 
-// const intervalId = setInterval(() => {
-//     console.log("setInterval")
-// }, 500)
-
-// // clearTimeout(id)
-
-// setTimeout(() => {
-//     clearInterval(intervalId)
-//     console.log("Clear Interval")
-// }, 3000)
-
-
-let timer = 10;
 
 const id = setInterval(() => {
-    timer--;
-    console.log(timer)
-    // element.innerText = timer
-    if(timer === 0){
-        clearInterval(id)
+    if (timerOn) {
+        time--
+        timer.innerText = time < 10 ? `0${time}` : time;
+        if (time === 0) {
+            audioPlayer();
+            time = 15;
+            timer.innerText = time;
+            timerOn = false;
+            btn.innerText = "Start";
+            clearInterval(id)
+        }
     }
 }, 1000)
