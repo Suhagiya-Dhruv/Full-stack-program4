@@ -1,47 +1,41 @@
-const timer = document.getElementById('timer');
-const audio = document.getElementById('audio');
+const list = document.getElementById("list");
 
-// console.log(timer.getBoundingClientRect()) // {top, left, right, bottom, height, width,x ,y}
+const valueList = [];
 
-let time = 5;
-let timerOn = false;
-timer.innerText = time;
-let btn;
-function timerHandler(button) {
-    btn = button
-    timerOn = !timerOn;
-    button.innerText = timerOn ? "Stop" : "Start";
+function addTask() {
+    const inputElement = document.getElementById("input");
+    valueList.push(inputElement.value);
+    displayTasks();
 }
 
-function resetHandler() {
-    time = 16;
+function deleteItem(element) {
+    const index = element.dataset.index;
+    valueList.splice(index, 1);
+
+    element.parentNode.remove();
 }
+function displayTasks() {
 
-let count = 1;
+    let text = "";
+    for (let i = 0; i < valueList.length; i++) {
+        const temp = `
+        <div>
+            <label for="">
+                <input type="checkbox">
+                ${valueList[i]}
+            </label>
+            <button onclick="deleteItem(this)" data-index="${i}">delete</button>
+        </div>
+        `
 
-function audioPlayer() {
-    const audioId = setInterval(() => {
-        audio.play();
-        count++;
-        if (count == 10) {
-            clearInterval(audioId);
-            count = 0;
-        }
-    }, 1000)
-}
-
-
-const id = setInterval(() => {
-    if (timerOn) {
-        time--
-        timer.innerText = time < 10 ? `0${time}` : time;
-        if (time === 0) {
-            audioPlayer();
-            time = 15;
-            timer.innerText = time;
-            timerOn = false;
-            btn.innerText = "Start";
-            clearInterval(id)
-        }
+        text = text + temp;
     }
-}, 1000)
+
+    list.innerHTML = text;
+    document.getElementById("input").value = "";
+
+}
+
+
+// localStorage
+// sessionStorage
