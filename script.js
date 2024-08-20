@@ -1,80 +1,57 @@
+const url = 'https://fakestoreapi.com/products';
 
+// https://www.flipkart.com/tyy/4io/~cs-htur2m2l6m/pr?sid=tyy%2C4io&collection-tab-name=realme+13+Pro+5G+Series&pageCriteria=default&param=9079&otracker=clp_bannerads_1_20.bannerAdCard.BANNERADS_realme-13-Pro-Series-5G-Sale%2BIs%2BLive_mobile-phones-store_T3TQV4OHQ3X9&p%5B%5D=facets.rating%255B%255D%3D3%25E2%2598%2585%2B%2526%2Babove
 const list = document.getElementById("list");
 
-const storeValue = JSON.parse(localStorage.getItem("todo")) || [];
+async function fetchData() {
+    const data = await fetch(url)
+    .then(data => data.json())
+    .then(data => data)
+    .catch(err => console.log(err));
 
-if(storeValue.length){
-    renderValue()
-}
+    let tag = ""
+    for(let i=0;i<data.length ;i++){
+        console.log(data[i].title);
 
-function updateStorage() {
-
-    localStorage.setItem("todo", JSON.stringify(storeValue));
-
-    // localStorage.setItem("key", "value")
-    // localStorage.getItem("key");
-
-    // setTimeout(() => {
-    //     localStorage.removeItem("key")
-    //     localStorage.clear();
-    // }, 2000)
-
-    // sessionStorage.setItem("key", "value")
-    // sessionStorage.getItem("key");
-
-    // setTimeout(() => {
-    //     sessionStorage.removeItem("key")
-    //     sessionStorage.clear();
-    // }, 2000)
-
-}
-
-function removeItem(element, index) {
-    storeValue.splice(index, 1);
-    element.parentNode.remove();
-    updateStorage();
-}
-
-function checkbox(element, index) {
-    storeValue[index].status = element.checked;
-    updateStorage();
-    renderValue();
-}
-
-function renderValue() {
-
-    let label = "";
-
-    for (let i = 0; i < storeValue.length; i++) {
-
-        const status = storeValue[i].status;
-
-        const temp = `
-        <div>
-            <label for="" class="${status ? "line" : ""}">
-                <input type="checkbox" onchange="checkbox(this, ${i})" ${status ? "checked" : null}>
-                ${storeValue[i].name}
-            </label>
-            ${status ? "" : `<button onclick="removeItem(this, ${i})">Delete</button>`}
+        tag += `<div>
+        <h3>${data[i].title}</h3>
+        <img src="${data[i].image}" />
         </div>`
-
-        label += temp;
     }
-
-    list.innerHTML = label;
-    document.getElementById("input").value = "";
-
+    list.innerHTML = tag;
 }
 
-function addTask() {
-    const value = document.getElementById("input").value;
-    if (value.trim()) { // value.length !== 0 || value !== "" || ""
-        const temp = {
-            name: value,
-            status: false
-        }
-        storeValue.push(temp);
-        updateStorage();
-        renderValue();
-    }
-}
+fetchData()
+
+
+// Promise
+
+// resolve then
+// reject catch
+
+// fullfilled
+// pending
+
+// 1/1/2024
+
+// 7/1/2024 - X
+
+
+// 15/1/2024
+
+// 16 
+
+// function myPromise(res, rej) {
+//     // res("Promise is Resolved");
+
+//     setTimeout(() => {
+//         res("Resolve after 5 Sec")
+//     }, 5000);
+    
+//     rej("Reject");
+// }
+
+// const p = new Promise(myPromise);
+
+
+// p.then(data => console.log("Then", data)).catch(data => console.log("Catch", data))
