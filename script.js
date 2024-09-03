@@ -1,57 +1,57 @@
-const url = 'https://fakestoreapi.com/products';
+const array = [5,1,81,8,1,7,8,45,0,4,84];
+const index = [[1,2],[2,3],[5,8],[1,5],[3,6],[6,9],[0,10],[0,10],[0,10],[0,10],[0,10],[0,10],[0,10],[0,10],[0,10],[0,10]];
 
-// https://www.flipkart.com/tyy/4io/~cs-htur2m2l6m/pr?sid=tyy%2C4io&collection-tab-name=realme+13+Pro+5G+Series&pageCriteria=default&param=9079&otracker=clp_bannerads_1_20.bannerAdCard.BANNERADS_realme-13-Pro-Series-5G-Sale%2BIs%2BLive_mobile-phones-store_T3TQV4OHQ3X9&p%5B%5D=facets.rating%255B%255D%3D3%25E2%2598%2585%2B%2526%2Babove
-const list = document.getElementById("list");
-
-async function fetchData() {
-    const data = await fetch(url)
-    .then(data => data.json())
-    .then(data => data)
-    .catch(err => console.log(err));
-
-    let tag = ""
-    for(let i=0;i<data.length ;i++){
-        console.log(data[i].title);
-
-        tag += `<div>
-        <h3>${data[i].title}</h3>
-        <img src="${data[i].image}" />
-        </div>`
+const ans = [];
+console.time();
+for(let x=0; x<index.length; x++){
+    let i = index[x][0]; // [1, 2]
+    let j = index[x][1];
+    
+    let sum = 0;
+    for(let k=i; k<=j; k++){
+        sum += array[k];
     }
-    list.innerHTML = tag;
+    ans.push(sum);
 }
 
-fetchData()
+console.log(ans);
 
+// const prefix = [];
+// prefix[0] = array[0];
 
-// Promise
-
-// resolve then
-// reject catch
-
-// fullfilled
-// pending
-
-// 1/1/2024
-
-// 7/1/2024 - X
-
-
-// 15/1/2024
-
-// 16 
-
-// function myPromise(res, rej) {
-//     // res("Promise is Resolved");
-
-//     setTimeout(() => {
-//         res("Resolve after 5 Sec")
-//     }, 5000);
-    
-//     rej("Reject");
+// for(let i = 1; i<array.length; i++){
+//     prefix[i] = prefix[i-1] + array[i] // 
 // }
 
-// const p = new Promise(myPromise);
+// for(let x=0; x<index.length; x++){
+//     let i = index[x][0]; // [1, 2]
+//     let j = index[x][1];
+    
+//     if(i==0){
+//         ans.push(prefix[j]);
+//     }else{
+//         ans.push(prefix[j]-prefix[i-1]);
+//     }
+// }
+
+// console.log(ans);
+console.timeEnd();
 
 
-// p.then(data => console.log("Then", data)).catch(data => console.log("Catch", data))
+
+// const postfix = [];
+// postfix[array.length-1] = array[array.length-1];
+
+// for(let i=array.length-2;i>=0;i--){
+//     postfix[i] = postfix[i+1] + array[i];
+// }
+
+
+
+// console.log(prefix);
+
+// console.log(postfix);
+
+
+
+
