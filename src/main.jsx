@@ -1,9 +1,11 @@
 import { createRoot } from 'react-dom/client'
-import Layout from './Components/layout'
+// import Counter from './Counter'
+import Counter2 from './Counter2'
 
 createRoot(document.getElementById('root')).render(
-  <Layout name="123">
-    <h1>Main  2</h1>
-  </Layout>
-  
+  <>
+    {/* <Counter /> */}
+    <Counter2 />
+  </>
+
 )
