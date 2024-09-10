@@ -4,15 +4,14 @@ const Counter2 = () => {
 
     const [count, setCount] = useState(0);
     const [value, setValue] = useState(5);
-
-    let inputValueNumber = 0;
+    const [inputValueNumber, setInputValue] = useState(0)
 
     const inputValue = (event) => {
-        inputValueNumber = event.target.value;
+        setInputValue(event.target.value);
     }
 
     const setValueFn = () => {
-        setValue(inputValueNumber)
+        setValue(Number(inputValueNumber))
     }
 
     return ( // render, re-render
