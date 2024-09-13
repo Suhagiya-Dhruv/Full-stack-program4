@@ -1,13 +1,12 @@
 import { createRoot } from 'react-dom/client'
-// import Counter from './Counter'
-// import Counter2 from './Counter2'
-import ToDoList from './ToDoList.jsx'
+// import App from './App'
+import Parent1 from './Parent1'
+
 
 createRoot(document.getElementById('root')).render(
   <>
-    {/* <Counter /> */}
-    {/* <Counter2 /> */}
-    <ToDoList />
+    {/* <App /> */}
+    <Parent1 />
   </>
 
 )
