@@ -1,41 +1,21 @@
-import React, { useEffect, useMemo, useState } from 'react'
-
-
-
+import React, { useState } from 'react'
+import Parent1 from './Parent1';
+import { useDispatch } from 'react-redux';
+import CounterSlice from './counter';
 
 const App = () => {
+    const dispatch = useDispatch();
 
-    const [value, setValue] = useState('123');
-    const [count, setCount] = useState(Number(localStorage.getItem('count')) || 0);
-
-    function inputHandler(e) {
-        setValue(e.target.value);
+    function countUpdate(e) {
+        dispatch(CounterSlice.actions.incCount());
+        
     }
 
-    useEffect(() => {
-        localStorage.setItem('count', count)
-    }, [count])
-
-    const data = useMemo(() => {
-        return {
-            name: "john",
-            age: "123",
-            count: count,
-        }
-    }, [])
-    // const data = {
-    //     name: "john",
-    //     age: "123",
-    //     count: count
-    // }
-
-    console.log(data);
-
+    console.log("App.jsx ");
     return (
         <div>
-            <input type="text" onChange={inputHandler} value={value} />
-            <button onClick={() => setCount(count + 1)}>Click</button>
-            <button onClick={() => setCount(count - 1)}>- Click</button>
+            <button onClick={countUpdate}>Click</button>
+            <Parent1 />
         </div>
     )
 }

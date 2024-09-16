@@ -1,5 +1,3 @@
-Question: 
+https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en  => redux devtools
 
-n = 3   array.length > n > 0
-sum = 34
-const arr = [1,5,8,0,45,10,55,10,87,5,9,20,14,23,60]
+https://redux-toolkit.js.org/tutorials/quick-start => Redux
