@@ -1,43 +1,25 @@
-import React, { useState } from 'react'
-import Parent1 from './Parent1';
-import { useDispatch } from 'react-redux';
-import CounterSlice from './counter';
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+import About from "./pages/about"
+import Home from "./pages/home"
+import Home2 from "./pages/home2"
 
 const App = () => {
-    const dispatch = useDispatch();
 
-    function countUpdate(e) {
-        dispatch(CounterSlice.actions.incCount());
-        
-    }
-
-    console.log("App.jsx ");
     return (
-        <div>
-            <button onClick={countUpdate}>Click</button>
-            <Parent1 />
-        </div>
+        <BrowserRouter>
+            <div>
+                <ul>
+                    <Link to='/home'><li>Home</li></Link>
+                    <Link to="/about"><li>About</li></Link>
+                </ul>
+            </div>
+            <Routes>
+                <Route path="/home" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/home2" element={<Home2 />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
 export default App
-
-// useEffect(() => {
-//     console.log("useEffect() called");
-// })
-
-// useEffect(() => {
-//     console.log("useEffect() called");
-// }, [])
-
-// useEffect(() => {
-//     console.log("useEffect() called");
-// }, [count])
-
-// useEffect(() => {
-//     console.log("useEffect() called");
-
-//     return () => {
-//         alert("Cleanup function called");
-//     }
-// }, [])
