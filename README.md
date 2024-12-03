@@ -1,177 +1,134 @@
-In Node.js, `export` and `import` are used for modules and to structure your application into reusable pieces. Node.js provides a way to export code from one file and import it into another file, promoting modularity and separation of concerns.
-
-### 1. **Export/Import in Node.js**
-
-In Node.js, there are two main module systems you can use for importing and exporting code:
-
-1. **CommonJS (require and module.exports)** — This is the traditional Node.js module system.
-2. **ES Modules (import and export)** — This is the newer ECMAScript module system, supported since Node.js 12.x.
-
-#### CommonJS: `require` and `module.exports`
-
-- **Exporting**: To export variables, functions, or objects from a file, you use `module.exports`.
-- **Importing**: To import those exported elements, you use `require`.
-
-**Example:**
-Let's say you have a file `math.js` where you define a simple function to add two numbers.
-
+### 1. HTTP Module Example
 ```javascript
-// math.js
-function add(a, b) {
-  return a + b;
+const http = require('http');
+
+const user1 = {
+    name: "user1"
 }
 
-module.exports = add;  // Exporting the add function
-```
-
-In another file, `app.js`, you can import the `add` function:
-
-```javascript
-// app.js
-const add = require('./math');  // Importing the add function from math.js
-
-console.log(add(2, 3));  // Output: 5
-```
-
-#### ES Modules: `import` and `export`
-
-- **Exporting**: Use `export` to export variables, functions, or objects.
-- **Importing**: Use `import` to load the exported elements from another file.
-
-You need to use `.mjs` file extensions, or configure your `package.json` to indicate that the code should use ES modules (e.g., `"type": "module"`).
-
-**Example:**
-```javascript
-// math.mjs
-export function add(a, b) {
-  return a + b;
+const user2 = {
+    name: "user2"
 }
+
+const server = http.createServer((request, response) => {
+    const data = request.url.split("?")[1];
+    const name = data?.split("=")[1];
+    console.log(name)
+    if (name === 'user1') {
+        response.write(JSON.stringify(user1));
+        response.end();
+    } else if (name === 'user2') {
+        response.write(JSON.stringify(user2));
+        response.end();
+    } else {
+        response.end();
+    }
+
+});
+
+server.listen(3000);
 ```
 
-In the `app.mjs` file, you can import it like this:
+**Explanation:**
+- This example uses the built-in `http` module to create a basic HTTP server.
+- The `user1` and `user2` objects are simple JavaScript objects containing user information.
+- `http.createServer()` is used to create the server that listens for incoming requests. The callback function takes `request` and `response` objects.
+- Inside the callback, the server extracts the query parameters from the URL using `request.url.split("?")[1]`. It checks for the value of `name` in the query string (`name=user1` or `name=user2`).
+- Depending on the value of `name`, the server responds with the corresponding JSON data (`user1` or `user2`).
+- If there is no match or query, the server just ends the response without sending data.
+- The server is listening on port 3000, meaning you can visit `http://localhost:3000/?name=user1` or `http://localhost:3000/?name=user2` to get JSON data for user1 or user2.
+
+---
+
+### 2. Express Module Example (without filesystem)
 
 ```javascript
-// app.mjs
-import { add } from './math.mjs';  // Importing the add function from math.mjs
+const express = require('express');
+const app = express();
 
-console.log(add(2, 3));  // Output: 5
-```
+const data = [
+    { id: 1, name: 'user1' },
+    { id: 2, name: 'user2' }
+];
 
-### 2. **File System (fs) in Node.js**
+app.get('/', (request, response) => {
+    response.json(data)
+})
 
-Node.js provides a built-in module called `fs` (File System) to interact with files and directories. It allows you to read, write, update, and delete files, as well as perform other file-related operations asynchronously or synchronously.
+app.get('/:userId', (request, response) => {
+    const userId = request.params.userId;
+    const filterData = data.find(item => item.id == userId);
+    response.json(filterData);
+})
 
-#### Key `fs` Functions:
-
-1. **fs.readFile()** - Reads a file asynchronously.
-2. **fs.readFileSync()** - Reads a file synchronously.
-3. **fs.writeFile()** - Writes data to a file asynchronously.
-4. **fs.writeFileSync()** - Writes data to a file synchronously.
-5. **fs.appendFile()** - Appends data to a file asynchronously.
-6. **fs.appendFileSync()** - Appends data to a file synchronously.
-7. **fs.existsSync()** - Checks if a file exists synchronously.
-8. **fs.unlink()** - Deletes a file asynchronously.
-
-#### Example: Using the `fs` module
-
-1. **Reading a file asynchronously:**
-
-```javascript
-// app.js
-const fs = require('fs');
-
-// Read the file 'example.txt'
-fs.readFile('example.txt', 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading file:', err);
-    return;
-  }
-  console.log('File content:', data);  // Prints the content of 'example.txt'
+app.listen(3000, () => {
+    console.log('Server started on port 3000');
 });
 ```
 
-2. **Writing to a file asynchronously:**
+**Explanation:**
+- This example uses the `express` module, which simplifies working with HTTP requests and responses.
+- Instead of manually handling the query parsing and routing, `express` makes it easier with built-in methods like `app.get()`.
+- The `data` array is a static array of user objects, each containing an `id` and a `name`.
+- `app.get('/')`: This route handles requests to the root URL (`/`). It responds with the entire `data` array as JSON.
+- `app.get('/:userId')`: This route handles requests where a user ID is passed as a URL parameter (e.g., `/1` or `/2`). It uses `request.params.userId` to extract the user ID and then filters the `data` array to find the matching user based on the `id` field.
+- The server listens on port 3000, so you can visit `http://localhost:3000/` to see all users, or `http://localhost:3000/1` to get the data for user1.
 
-```javascript
-const fs = require('fs');
+### Key Differences Between the Two Examples:
+1. **HTTP Module**:
+   - More manual setup: you need to parse the query string and handle the response yourself.
+   - Less abstraction, giving you more control over the server behavior.
 
-// Write to the file 'example.txt'
-fs.writeFile('example.txt', 'Hello, Node.js!', (err) => {
-  if (err) {
-    console.error('Error writing to file:', err);
-    return;
-  }
-  console.log('File has been written!');
-});
-```
+2. **Express Module**:
+   - Simplifies routing and handling HTTP requests.
+   - Provides built-in methods for handling routes, parameters, and responses.
+   - More developer-friendly with less boilerplate code.
 
-3. **Appending to a file asynchronously:**
+Here's an overview of the most common **HTTP methods** used in Express (and web development in general):
 
-```javascript
-const fs = require('fs');
+### 1. **GET**
+- **Purpose**: To retrieve data from the server.
+- **Use case**: Fetching resources or information (e.g., retrieving a list of users or a specific item).
+- **Idempotent**: Yes. Making the same GET request multiple times will always return the same result without causing any side effects on the server.
 
-// Append to the file 'example.txt'
-fs.appendFile('example.txt', '\nAppended content!', (err) => {
-  if (err) {
-    console.error('Error appending to file:', err);
-    return;
-  }
-  console.log('Content has been appended!');
-});
-```
+### 2. **POST**
+- **Purpose**: To send data to the server, usually to create a new resource.
+- **Use case**: Submitting forms, creating new records in a database, uploading files, etc.
+- **Idempotent**: No. Each POST request can create a new resource or trigger some action on the server.
 
-4. **Checking if a file exists:**
+### 3. **PUT**
+- **Purpose**: To update an existing resource on the server.
+- **Use case**: Updating the information of an existing item (e.g., modifying user details or updating product information).
+- **Idempotent**: Yes. Making the same PUT request multiple times with the same data will not result in a different state or unintended side effects.
 
-```javascript
-const fs = require('fs');
+### 4. **DELETE**
+- **Purpose**: To delete a resource on the server.
+- **Use case**: Removing a record or item from the system (e.g., deleting a user or product).
+- **Idempotent**: Yes. Making the same DELETE request multiple times will have the same effect as the first request (the resource will be deleted).
 
-if (fs.existsSync('example.txt')) {
-  console.log('File exists!');
-} else {
-  console.log('File does not exist!');
-}
-```
+### 5. **PATCH**
+- **Purpose**: To partially update a resource.
+- **Use case**: Making partial updates to an existing resource (e.g., changing just one field of a user profile).
+- **Idempotent**: No. Repeated PATCH requests might result in different server states if the changes are incremental and not entirely deterministic.
 
-### Combining `export/import` and `fs` Example
+### 6. **OPTIONS**
+- **Purpose**: To describe the communication options for the target resource.
+- **Use case**: Checking the allowed HTTP methods and other communication options for a resource (often used in pre-flight CORS requests).
+- **Idempotent**: Yes. The response will be the same every time.
 
-You can combine these concepts in a more complex example. For instance, you could export functions that handle file operations:
+### 7. **HEAD**
+- **Purpose**: Similar to a GET request but only retrieves the headers, not the body.
+- **Use case**: Checking metadata (e.g., content length, content type, etc.) without downloading the full resource.
+- **Idempotent**: Yes.
 
-```javascript
-// fileOperations.js
-const fs = require('fs');
+### Request Data Types
+- **Query Parameters**: Data appended to the URL after the `?` symbol, often used for filtering or modifying the request (e.g., `?name=user`).
+- **Route Parameters**: Dynamic values within the URL path, often used to identify a resource (e.g., `/user/:id`).
+- **Request Body**: Data sent with POST, PUT, or PATCH requests, often in JSON or form-data format. Used for sending large or complex data.
 
-function readFileContent(fileName, callback) {
-  fs.readFile(fileName, 'utf8', callback);
-}
-
-function writeToFile(fileName, data, callback) {
-  fs.writeFile(fileName, data, callback);
-}
-
-module.exports = { readFileContent, writeToFile };  // Export the functions
-```
-
-Then, in your main file:
-
-```javascript
-// app.js
-const { readFileContent, writeToFile } = require('./fileOperations');
-
-readFileContent('example.txt', (err, data) => {
-  if (err) {
-    console.error('Error reading file:', err);
-  } else {
-    console.log('File Content:', data);
-  }
-});
-
-writeToFile('newFile.txt', 'Writing this to the new file', (err) => {
-  if (err) {
-    console.error('Error writing to file:', err);
-  } else {
-    console.log('Successfully wrote to the file');
-  }
-});
-```
-
-This is how you can structure a simple Node.js application using the `fs` module, along with the `export` and `import` functionality to create modular code.
+### Response Types
+- **res.send()**: Sends a general response, can be text, HTML, or any other content.
+- **res.json()**: Sends a response in JSON format and sets the `Content-Type` header to `application/json`.
+- **res.status()**: Sets the HTTP status code for the response (e.g., `200` for success, `404` for not found).
+- **res.redirect()**: Redirects the client to another URL.
+- **res.render()**: Renders a template view with dynamic data (used with template engines like EJS, Pug, etc.).
