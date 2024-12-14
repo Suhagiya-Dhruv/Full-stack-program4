@@ -1,97 +1,143 @@
-### SQL vs. NoSQL Databases
+### **1. Set Up Express.js with MongoDB**
+1. **Install Required Packages**:
+   ```bash
+   npm install express mongoose
+   ```
+   - **express**: For building the server.
+   - **mongoose**: For connecting to MongoDB and managing schemas/models.
 
-**SQL (Structured Query Language)** and **NoSQL (Not Only SQL)** are two categories of databases that differ primarily in how data is structured, stored, and accessed. Each has its advantages and is suitable for different types of applications.
+2. **Basic Express App**:
+   ```javascript
+   const express = require('express');
+   const mongoose = require('mongoose');
+   const bodyParser = require('body-parser');
 
-### **1. SQL Databases (Relational Databases)**
+   const app = express();
 
-SQL databases are based on a **relational model**, meaning they store data in **tables (relations)**, which consist of rows and columns. Each table has a predefined schema that dictates the structure of data. 
+   // Middleware to parse JSON
+   app.use(express.json());
 
-**Key Features:**
-- **Schema-based**: SQL databases require a predefined schema that dictates how data is organized. This schema defines tables, columns, data types, and relationships between tables.
-- **ACID Compliance**: SQL databases are typically ACID-compliant (Atomicity, Consistency, Isolation, Durability), which means they support reliable transactions and ensure data integrity.
-- **Structured Data**: Data is typically structured, and all data must adhere to the schema.
-- **Queries**: Data is queried using the SQL language, which allows complex joins, aggregations, and filtering.
+   // MongoDB connection
+   const DB_URI = 'mongodb://localhost:27017/mydatabase'; // Replace 'mydatabase' with your DB name
+   mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+     .then(() => console.log('MongoDB connected!'))
+     .catch(err => console.log('Error connecting to MongoDB:', err));
 
-**Examples of SQL Databases**:
-- **MySQL**: Open-source relational database, very popular in web development.
-- **PostgreSQL**: Advanced open-source relational database with support for complex queries and data types.
-- **Microsoft SQL Server**: A relational database developed by Microsoft, widely used in enterprise environments.
-- **Oracle Database**: A powerful and widely used enterprise database solution.
+   // Start server
+   const PORT = 3000;
+   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+   ```
 
-**When to use SQL:**
-- When data has a fixed structure.
-- For applications that require complex queries and reporting (e.g., financial applications).
-- When ensuring data integrity and transactional consistency is critical.
-- In applications with clear relationships between entities (e.g., users, orders, payments).
+---
 
-### **2. NoSQL Databases**
+### **2. Create a Schema and Model**
+1. **Define a Schema**:
+   A schema defines the structure of the documents in the collection.
+   ```javascript
+   const mongoose = require('mongoose');
 
-NoSQL databases, as the name suggests, do not rely on SQL as the primary method for querying and do not have a fixed schema. They are designed for scalability, flexibility, and speed, and they can handle a wide variety of data models like key-value, document, column-family, and graph formats.
+   const userSchema = new mongoose.Schema({
+     name: { type: String, required: true },
+     age: { type: Number, required: true },
+     email: { type: String, required: true, unique: true }
+   });
 
-**Key Features:**
-- **Flexible Schema**: NoSQL databases do not require a fixed schema, allowing you to store data with different formats in the same collection. This flexibility is great for evolving datasets or rapidly changing data models.
-- **Scalability**: Many NoSQL databases are designed for horizontal scaling, which means they can handle an increasing amount of data by distributing it across multiple servers.
-- **Eventual Consistency**: Unlike SQL databases that focus on strong consistency, NoSQL databases often follow the "eventual consistency" model, where data is replicated across servers and eventually becomes consistent.
-- **Data Models**: NoSQL supports various data models:
-  - **Key-Value Stores** (e.g., Redis, DynamoDB)
-  - **Document Stores** (e.g., MongoDB, CouchDB)
-  - **Column-Family Stores** (e.g., Cassandra, HBase)
-  - **Graph Databases** (e.g., Neo4j, ArangoDB)
-  
-**Examples of NoSQL Databases**:
-- **MongoDB**: A document-oriented NoSQL database that stores data in JSON-like documents.
-- **Cassandra**: A distributed column-family store known for its high scalability.
-- **Redis**: An in-memory key-value store often used for caching and real-time applications.
-- **Elasticsearch**: A search engine based on the Lucene library, often used for indexing large datasets and providing full-text search.
+   // Create a model
+   const User = mongoose.model('User', userSchema);
 
-**When to use NoSQL:**
-- When dealing with unstructured or semi-structured data (e.g., user profiles, product catalogs).
-- For applications that need to scale horizontally to handle large amounts of data or high throughput (e.g., social networks, real-time analytics).
-- In environments where the data schema is expected to evolve rapidly or if the structure of data varies significantly.
-- When the application needs to be highly available and can tolerate eventual consistency (e.g., caching, logs).
+   module.exports = User;
+   ```
 
-### **Key Differences Between SQL and NoSQL**
+---
 
-| Feature                    | SQL Databases                          | NoSQL Databases                      |
-|----------------------------|----------------------------------------|--------------------------------------|
-| **Data Model**              | Relational (tables, rows, columns)     | Non-relational (key-value, document, column-family, graph) |
-| **Schema**                  | Fixed schema                           | Flexible or schema-less              |
-| **Query Language**          | SQL (Structured Query Language)        | Varies (depends on the database type)|
-| **Transactions**            | ACID compliant                         | CAP theorem (Consistency, Availability, Partition Tolerance) |
-| **Scalability**             | Vertical scaling (adding power to a single server) | Horizontal scaling (adding more servers) |
-| **Consistency Model**       | Strong consistency (ACID)              | Eventual consistency or tunable consistency |
-| **Examples**                | MySQL, PostgreSQL, Oracle, MS SQL      | MongoDB, Cassandra, Redis, Elasticsearch |
-| **Use Cases**               | Structured data, transactional systems | Unstructured data, big data, real-time applications |
+### **3. Create a Collection and Add Data**
+1. **Add Data to the Collection**:
+   ```javascript
+   const User = require('./models/User'); // Path to the model file
 
-### **Advantages of SQL Databases**
-- **Data Integrity**: ACID properties ensure data is accurate and consistent.
-- **Mature and Established**: SQL databases are older and have a long history of being reliable and robust for many use cases.
-- **Advanced Querying**: SQL offers powerful query capabilities for complex joins, aggregations, and subqueries.
-- **Structured Data**: Ideal for applications where data is highly structured and relationships between entities are well-defined.
+   app.post('/add-user', async (req, res) => {
+     try {
+       const userData = req.body; // { name: "John", age: 25, email: "john@example.com" }
+       const user = new User(userData);
+       const savedUser = await user.save();
+       res.status(201).json({ message: 'User created successfully', data: savedUser });
+     } catch (error) {
+       res.status(400).json({ error: error.message });
+     }
+   });
+   ```
 
-### **Advantages of NoSQL Databases**
-- **Flexibility**: Schema-less design allows for storing unstructured or semi-structured data.
-- **Scalability**: Horizontal scaling allows NoSQL databases to handle vast amounts of data and high user traffic.
-- **Performance**: Many NoSQL databases are optimized for performance, especially in scenarios like real-time data processing or caching.
-- **Availability**: NoSQL databases are often more available, as they are distributed and can handle partial failures without downtime.
+---
 
-### **When to Choose SQL Over NoSQL**
-- You need to ensure strong data consistency (e.g., financial transactions).
-- Your application requires complex queries or joins.
-- Your data is well-structured and unlikely to change frequently.
-- You're working with relational data that fits neatly into tables (e.g., e-commerce platforms).
+### **4. Find Data (Queries)**
+1. **Find All Documents**:
+   ```javascript
+   app.get('/users', async (req, res) => {
+     try {
+       const users = await User.find();
+       res.status(200).json(users);
+     } catch (error) {
+       res.status(500).json({ error: error.message });
+     }
+   });
+   ```
 
-### **When to Choose NoSQL Over SQL**
-- Your application deals with unstructured or semi-structured data (e.g., JSON documents).
-- You need scalability and performance at a massive scale.
-- Your data model needs to be flexible and may change over time.
-- You are building applications that need to handle high traffic, like social media platforms or real-time data processing.
+2. **Find One Document**:
+   ```javascript
+   app.get('/user/:id', async (req, res) => {
+     try {
+       const user = await User.findById(req.params.id);
+       if (!user) {
+         return res.status(404).json({ message: 'User not found' });
+       }
+       res.status(200).json(user);
+     } catch (error) {
+       res.status(500).json({ error: error.message });
+     }
+   });
+   ```
 
-### Conclusion
+3. **Find with a Condition**:
+   ```javascript
+   app.get('/users-by-age/:age', async (req, res) => {
+     try {
+       const users = await User.find({ age: req.params.age });
+       res.status(200).json(users);
+     } catch (error) {
+       res.status(500).json({ error: error.message });
+     }
+   });
+   ```
 
-Both SQL and NoSQL databases have their strengths and weaknesses. SQL databases are best for structured data with clear relationships and high data integrity, whereas NoSQL databases excel in handling large amounts of unstructured or semi-structured data with the ability to scale horizontally. The choice depends on the specific needs of your application, including the type of data, scalability requirements, and consistency needs.
+---
 
-Database Download link: [text](https://www.mongodb.com/try/download/community)
+### **5. Update and Delete**
+1. **Update Document**:
+   ```javascript
+   app.put('/user/:id', async (req, res) => {
+     try {
+       const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+       if (!updatedUser) {
+         return res.status(404).json({ message: 'User not found' });
+       }
+       res.status(200).json(updatedUser);
+     } catch (error) {
+       res.status(500).json({ error: error.message });
+     }
+   });
+   ```
 
-
-![alt text](image.png)
+2. **Delete Document**:
+   ```javascript
+   app.delete('/user/:id', async (req, res) => {
+     try {
+       const deletedUser = await User.findByIdAndDelete(req.params.id);
+       if (!deletedUser) {
+         return res.status(404).json({ message: 'User not found' });
+       }
+       res.status(200).json({ message: 'User deleted successfully' });
+     } catch (error) {
+       res.status(500).json({ error: error.message });
+     }
+   });
+   ```
