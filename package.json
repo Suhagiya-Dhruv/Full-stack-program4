@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "quiz",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,6 +7,7 @@
     "laptop": "node express.js",
     "start": "nodemon express.js"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "description": "",

@@ -1,13 +1,12 @@
-const express = require('express');
-const { dbConnection } = require('./config/dbConnection');
-const userRouter = require('./routers/userRouter');
+import express from 'express';
+import { dbConnection } from "./config/dbConnection.js";
+import userRouter from "./routers/userRouter.js";
 
 const app = express();
 dbConnection()
 
-//router 
 app.use(express.json());
-app.use('/user', userRouter)
+app.use('/api/v1/user', userRouter);
 
 app.listen(5000, () => {
     console.log('Server is running on port 5000');

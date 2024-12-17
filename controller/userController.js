@@ -1,42 +1,45 @@
-const UserModel = require('../models/userModel');
+import userModel from "../models/userModel.js"
 
-const getUser = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
-        const user = await UserModel.find({});
+        const { name, email, password, role } = req.body;
 
-        return res.json(user);
-    } catch (err) {
-        return res.json(err)
-    }
-}
-
-// Error handling
-
-const createUser = async (req, res) => {
-    try {
-        const { name, mobile, role } = req.body;
-
-        // find
-        const user = await UserModel.findOne({ mobile }); // single user find
-
-        if (user) {
-            return res.send("user already exits..!")
+        if (!name || !email || !password || !role) {
+            return res.status(400).json({
+                message: "All filed required",
+                status: false,
+                data: null
+            })
         }
 
-        const resposne = await UserModel.create({
+        const user = await userModel.findOne({ email })
+
+        if (user) {
+            return res.status(200).json({
+                message: "user already exits",
+                status: false,
+                data: null
+            })
+        }
+
+        const newUser = await userModel.create({
             name,
-            mobile,
+            email,
+            password,
             role
-        }) // data create
+        })
 
-        return res.status(201).send('User created successfully');
+        return res.status(201).json({
+            message: "user created",
+            status: true,
+            data: newUser
+        })
 
-    } catch (err) {
-        return res.send(err)
+    } catch (e) {
+        return res.status(500).json({
+            message: e.message,
+            status: false,
+            data: null
+        })
     }
-}
-
-module.exports = {
-    getUser,
-    createUser
 }
