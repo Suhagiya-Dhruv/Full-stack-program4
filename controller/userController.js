@@ -114,3 +114,39 @@ export const loginUser = async (req, res) => {
         })
     }
 }
+
+export const banUnbanUser = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+        const { ban } = req.body;
+
+        const user = await userModel.findById(id);
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found",
+                status: false,
+                data: null
+            })
+        }
+
+        user.isBan = ban;
+        user.updatedAt = Date.now();
+
+        await user.save();
+
+        return res.json({
+            message: "Ban/Unban is successfully",
+            status: true,
+            data: null
+        })
+
+    } catch (e) {
+        return res.status(500).json({
+            message: e.message,
+            status: false,
+            data: null
+        })
+    }
+}
