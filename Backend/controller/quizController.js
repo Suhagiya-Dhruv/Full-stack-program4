@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import quizModel from "../models/quizModel.js"
 
 export const allQuizList = async (req, res) => {
@@ -23,7 +24,24 @@ export const singleQuizList = async (req, res) => {
     try {
 
         const id = req.params.id;
-        const quiz = await quizModel.findById(id);
+        // const quiz = await quizModel.findById(id);
+
+        // pipeline
+        const quiz = await quizModel.aggregate([
+            {
+                $match:{
+                    _id: new mongoose.Types.ObjectId(id)
+                }
+            },
+            {
+                $lookup:{
+                    from: "questions",
+                    localField: "_id",
+                    foreignField: "quizId",
+                    as: "questions"
+                }
+            }
+        ])
 
         if (!quiz) {
             return res.status(404).json({

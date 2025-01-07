@@ -14,7 +14,7 @@ const options = new mongoose.Schema({
 
 const QuestionSchema = new mongoose.Schema({
     quizId: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
     },
     title: {
         type: String,
