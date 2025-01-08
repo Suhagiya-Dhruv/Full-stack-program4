@@ -1,6 +1,11 @@
+import SideBar from "@/components/ui/sidebar"
+
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className="flex">
+      <SideBar />
+      <div>User</div>
+    </div>
   )
 }
 
