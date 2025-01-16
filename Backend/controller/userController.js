@@ -150,3 +150,21 @@ export const banUnbanUser = async (req, res) => {
         })
     }
 }
+
+export const listUsers = async (req, res) => {
+    try {
+
+        const users = await userModel.find({}, { password: 0 });
+        return res.json({
+            message: 'Users List',
+            status: true,
+            data: users
+        })
+    } catch (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error',
+            status: false,
+            data: null
+        })
+    }
+}
