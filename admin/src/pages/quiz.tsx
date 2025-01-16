@@ -1,10 +1,10 @@
-import SideBar from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button"
 
 const Quiz = () => {
     return (
         <div className="flex">
-            <SideBar />
             <div>Quiz</div>
+            <Button>Create Quiz</Button>
         </div>
     )
 }

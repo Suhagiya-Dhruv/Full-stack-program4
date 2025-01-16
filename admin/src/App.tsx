@@ -3,14 +3,21 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Auth from "./auth/auth";
 import Quiz from "./pages/quiz";
+import Questions from "./pages/questions";
+import Layout from "./theme/layout";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/user" element={<Auth><Home /></Auth>} />
-        <Route path="/quiz" element={<Auth><Quiz /></Auth>} />
+
+        <Route path="/" element={<Auth><Layout /></Auth>}>
+          <Route path="users" element={<Home />} />
+          <Route path="quiz" element={<Quiz />} />
+          <Route path="question" element={<Questions />} />
+        </Route>
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

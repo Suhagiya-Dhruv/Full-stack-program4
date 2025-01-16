@@ -4,6 +4,10 @@ import { jwtDecode } from 'jwt-decode'
 
 export interface UserState {
     user: unknown
+    users: [{
+        name: string,
+        email: string,
+    }] | []
 }
 
 interface loginUser {
@@ -13,6 +17,7 @@ interface loginUser {
 
 const initialState: UserState = {
     user: {},
+    users: []
 }
 
 export const userSlice = createSlice({
@@ -21,11 +26,14 @@ export const userSlice = createSlice({
     reducers: {
         setUser: (state, action) => {
             state.user = action.payload;
+        },
+        setUserList: (state, action) => {
+            state.users = action.payload;
         }
     },
 })
 
-export const { setUser } = userSlice.actions
+export const { setUser, setUserList } = userSlice.actions
 
 export const loginUser = (data: loginUser, navigate: Function) => async (dispatch: any) => {
     try {
@@ -35,7 +43,7 @@ export const loginUser = (data: loginUser, navigate: Function) => async (dispatc
             if (decoded.role === 'Admin') {
                 localStorage.setItem('token', response.data.data);
                 dispatch(setUser(decoded))
-                navigate('/user')
+                navigate('/users')
                 return { status: false, message: "Login successful" }
             } else {
                 return { status: true, message: "Invalid credentials" }
@@ -47,4 +55,18 @@ export const loginUser = (data: loginUser, navigate: Function) => async (dispatc
 
 }
 
+export const getUserList = () => async (dispatch: any) => {
+    try {
+        const response = await axios.get("http://localhost:5000/api/v1/user/list", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')!}`
+            }
+        });
+        if (response.data.status) {
+            dispatch(setUserList(response.data.data))
+        }
+    } catch (err: any) {
+        return { status: true, message: err.response.data.message }
+    }
+}
 export default userSlice.reducer
