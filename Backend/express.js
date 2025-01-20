@@ -15,6 +15,6 @@ app.use('/api/v1/user', userRouter);
 app.use('/api/v1/quiz', quizRouter);
 app.use('/api/v1/question', questionRouter);
 
-app.listen(5000, () => {
-    console.log('Server is running on port 5000');
+app.listen(5500, () => {
+    console.log('Server is running on port 5500');
 });

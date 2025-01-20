@@ -37,7 +37,7 @@ export const { setUser, setUserList } = userSlice.actions
 
 export const loginUser = (data: loginUser, navigate: Function) => async (dispatch: any) => {
     try {
-        const response = await axios.post("http://localhost:5000/api/v1/user/login", data);
+        const response = await axios.post("http://localhost:5500/api/v1/user/login", data);
         if (response.data.status) {
             const decoded: any = jwtDecode(response.data.data);
             if (decoded.role === 'Admin') {
@@ -57,7 +57,7 @@ export const loginUser = (data: loginUser, navigate: Function) => async (dispatc
 
 export const getUserList = () => async (dispatch: any) => {
     try {
-        const response = await axios.get("http://localhost:5000/api/v1/user/list", {
+        const response = await axios.get("http://localhost:5500/api/v1/user/list", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')!}`
             }
@@ -69,4 +69,35 @@ export const getUserList = () => async (dispatch: any) => {
         return { status: true, message: err.response.data.message }
     }
 }
+
+export const createAdmin = (data: { name: string, email: string, password: string, role: string }) => async (dispatch: any) => {
+    try {
+        const response = await axios.post("http://localhost:5500/api/v1/user/create", data, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')!}`
+            }
+        });
+        if (response.data.status) {
+            dispatch(getUserList())
+        }
+    } catch (err: any) {
+        return { status: true, message: err.response.data.message }
+    }
+}
+
+export const toggleUser = (id: string, value: boolean) => async (dispatch: any) => {
+    try {
+        const response = await axios.patch(`http://localhost:5500/api/v1/user/ban/${id}`, { ban: value }, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')!}`
+            }
+        });
+        if (response.data.status) {
+            dispatch(getUserList())
+        }
+    } catch (err: any) {
+        return { status: true, message: err.response.data.message }
+    }
+}
+
 export default userSlice.reducer

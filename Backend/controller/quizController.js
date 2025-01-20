@@ -7,7 +7,9 @@ export const allQuizList = async (req, res) => {
         const quiz = await quizModel.find();
 
         return res.json({
-            data: quiz
+            status: true,
+            data: quiz,
+            message: "Quiz fetch successfully"
         })
 
     } catch (err) {
